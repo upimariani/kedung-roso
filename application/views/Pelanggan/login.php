@@ -3,16 +3,6 @@
 	<h2 class="tit6 t-center">
 		Login
 	</h2>
-	<?php if ($this->session->userdata('success')) {
-		echo '<div class="alert alert-success" role="alert">';
-		echo $this->session->userdata('success');
-		echo '</div>';
-	} ?>
-	<?php if ($this->session->userdata('error')) {
-		echo '<div class="alert alert-danger" role="alert">';
-		echo $this->session->userdata('success');
-		echo '</div>';
-	} ?>
 </section>
 
 

@@ -6,9 +6,10 @@ class mPesanan_Saya extends CI_Model
 {
 	public function pesanan()
 	{
-		$this->db->select('*');
+		$this->db->select('pesanan.id_pesanan, tgl_transaksi, total_bayar, alamat_detail, ongkir, status_order, status_bayar, nama_plggn, alamat, no_hp, komentar');
 		$this->db->from('pesanan');
 		$this->db->join('pelanggan', 'pesanan.id_pelanggan = pelanggan.id_pelanggan', 'left');
+		$this->db->join('ulasan', 'ulasan.id_pesanan = pesanan.id_pesanan', 'left');
 		$this->db->where('pesanan.id_pelanggan', $this->session->userdata('id'));
 		return $this->db->get()->result();
 	}
@@ -22,10 +23,9 @@ class mPesanan_Saya extends CI_Model
 		$this->db->where('pesanan.id_pesanan', $id);
 		return $this->db->get()->result();
 	}
-	public function bayar($id, $data)
+	public function bayar($data)
 	{
-		$this->db->where('id_transaksi', $id);
-		$this->db->update('transaksi', $data);
+		$this->db->insert('nota', $data);
 	}
 }
 

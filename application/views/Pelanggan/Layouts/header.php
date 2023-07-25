@@ -55,32 +55,37 @@
 								<li>
 									<a href="<?= base_url('pelanggan/chome') ?>">Home</a>
 								</li>
-
-								<li>
-									<a href="<?= base_url('pelanggan/cpesanansaya') ?>">Pesanan Saya</a>
-								</li>
-
-
 								<?php
-								$cart = 0;
-								foreach ($this->cart->contents() as $key => $value) {
-									$cart += $value['qty'];
-								}
-								if ($cart == '0') {
+								if ($this->session->userdata('id') != '') {
 								?>
+
 									<li>
-										<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart</a>
+										<a href="<?= base_url('pelanggan/cpesanansaya') ?>">Pesanan Saya</a>
 									</li>
-								<?php
-								} else {
-								?>
-									<li>
-										<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart<span class="badge badge-success"><?= $cart ?></span></a>
-									</li>
+
+
+									<?php
+									$cart = 0;
+									foreach ($this->cart->contents() as $key => $value) {
+										$cart += $value['qty'];
+									}
+									if ($cart == '0') {
+									?>
+										<li>
+											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart</a>
+										</li>
+									<?php
+									} else {
+									?>
+										<li>
+											<a href="<?= base_url('pelanggan/chome/view_cart') ?>" class="txt19">Cart<span class="badge badge-success"><?= $cart ?></span></a>
+										</li>
+									<?php
+									}
+									?>
 								<?php
 								}
 								?>
-
 								<?php
 								if ($this->session->userdata('id') == '') {
 								?>

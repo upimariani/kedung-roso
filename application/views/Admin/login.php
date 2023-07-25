@@ -33,14 +33,12 @@
 					if ($this->session->userdata('success')) {
 					?>
 						<div class="alert alert-success alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+
 							<div class="alert-icon">
 								<i class="far fa-fw fa-bell"></i>
 							</div>
 							<div class="alert-message">
-								<strong>Hallo!</strong> <?= $this->session->userdata('success') ?>
+								<strong>Sukses!</strong> <?= $this->session->userdata('success') ?>
 							</div>
 						</div>
 					<?php
@@ -50,14 +48,12 @@
 					if ($this->session->userdata('error')) {
 					?>
 						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+
 							<div class="alert-icon">
 								<i class="far fa-fw fa-bell"></i>
 							</div>
 							<div class="alert-message">
-								<strong>Hello there!</strong> <?= $this->session->userdata('error') ?>
+								<strong>Gagal!</strong> <?= $this->session->userdata('error') ?>
 							</div>
 						</div>
 					<?php

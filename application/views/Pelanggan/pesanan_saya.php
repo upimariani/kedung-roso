@@ -56,6 +56,9 @@
 									}
 									if ($value->status_order == '3') {
 										echo ' <span class="badge badge-primary">Pesanan Dikirim</span>';
+									?>
+										<a href="<?= base_url('Pelanggan/cPesananSaya/diterima/' . $value->id_pesanan) ?>" class="btn btn-warning">Pesanan Diterima</a>
+									<?php
 									}
 									if ($value->status_order == '4') {
 										echo '<span class="badge badge-success">Pesanan Selesai</span>';
@@ -75,17 +78,30 @@
 										if ($value->status_bayar != '1') {
 									?>
 											Pembayaran*
-											<?php echo form_open_multipart('pelanggan/cpesanansaya/bayar/' . $value->id_pesanan); ?>
-											<input type="file" name="bayar" class="form-control mb-2">
-											<input name="bank" class="form-control mb-2" placeholder="Masukkan Nama Bank">
-											<input name="norek" class="form-control mb-2" placeholder="Masukkan No Rekening">
+											<?php echo form_open_multipart('pelanggan/cpesanansaya/bayar/' . $value->id_pesanan . '/' . $value->total_bayar); ?>
+											<input type="file" name="bayar" class="form-control mb-2" required>
+											<input name="bank" class="form-control mb-2" placeholder="Masukkan Nama Bank" required>
+											<input name="norek" class="form-control mb-2" placeholder="Masukkan No Rekening" required>
 											<button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">Upload</button>
 											</form>
 										<?php
 										} ?>
 
-									<?php } ?>
 
+
+									<?php } ?>
+									<?php
+									if ($value->status_order == '4' && $value->komentar == 'NULL') {
+									?>
+										<form action="<?= base_url('Pelanggan/cPesananSaya/komentar/' . $value->id_pesanan) ?>" method="POST">
+											<textarea name="komentar" class="form-control" placeholder="Isi komentar pesanan anda..."></textarea>
+											<button class="btn btn-success mt-3">Kirim</button>
+										</form>
+
+									<?php
+									}
+
+									?>
 
 								</td>
 								<td class="text-center"><button data-id="<?= $value->id_pesanan ?>" class="btn_detail btn btn-default"><i class="fa fa-bars"></i></button></td>

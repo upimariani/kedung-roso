@@ -131,7 +131,14 @@
 
 									<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
 									<br>
-									<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
+									<?php
+									if ($this->session->userdata('id') != '') {
+									?>
+										<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
+									<?php
+									}
+									?>
+
 
 								</div>
 							</div>
@@ -176,7 +183,7 @@
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
 								<p class="t-center txt12 size15 m-l-r-auto">
-									<?= $value->kritik_saran ?>
+									<?= $value->komentar ?>
 								</p>
 
 								<div class="star-review fs-18 color0 flex-c-m m-t-12">
@@ -188,7 +195,7 @@
 								</div>
 
 								<div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-									<?= $value->nama_pelanggan ?> ˗ <?= $value->alamat ?>
+									<?= $value->nama_plggn ?> ˗ <?= $value->alamat ?>
 								</div>
 							</div>
 
@@ -205,23 +212,3 @@
 		<div class="wrap-slick3-dots m-t-30"></div>
 	</div>
 </section>
-
-
-<!-- Sign up -->
-<div class="section-signup bg1-pattern p-t-85 p-b-85">
-	<form action="<?= base_url('pelanggan/cchatting/saran') ?>" method="POST" class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
-		<span class="txt5 m-10">
-			Saran dan Kritik
-		</span>
-
-		<div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-			<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="kritik" placeholder="Kritik dan Saran...">
-			<i class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
-		</div>
-
-		<!-- Button3 -->
-		<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-			Sign-up
-		</button>
-	</form>
-</div>

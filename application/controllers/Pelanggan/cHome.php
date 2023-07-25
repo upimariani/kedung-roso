@@ -8,13 +8,12 @@ class cHome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mKatalog');
-		$this->load->model('mChatting');
 	}
 	public function index()
 	{
 		$data = array(
 			'menu' => $this->mKatalog->menu(),
-			// 'kritik' => $this->mChatting->select_kritik()
+			'kritik' => $this->mKatalog->ulasan()
 		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
