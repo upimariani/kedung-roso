@@ -36,7 +36,16 @@
 									<tr>
 										<td><?= $value->id_pesanan ?></td>
 										<td><?= $value->tgl_transaksi ?></td>
-										<td><?= $value->nama_plggn ?></td>
+										<?php
+										if ($value->nama_plggn == null) {
+										?>
+											<td>Transaksi Langsung</td>
+										<?php
+										} else {
+										?><td><?= $value->nama_plggn ?></td>
+										<?php
+										}
+										?>
 										<td>Rp. <?= number_format($value->total_bayar) ?></td>
 									</tr>
 								<?php

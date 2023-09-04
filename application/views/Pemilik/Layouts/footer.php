@@ -29,7 +29,7 @@
 	?>
 	var ctx = document.getElementById('transaksi');
 	var grafik = new Chart(ctx, {
-		type: 'pie',
+		type: 'bar',
 		data: {
 			labels: <?= json_encode($tgl) ?>,
 			datasets: [{
@@ -136,7 +136,7 @@
 	?>
 	var ctx = document.getElementById('produk');
 	var grafik = new Chart(ctx, {
-		type: 'pie',
+		type: 'bar',
 		data: {
 			labels: <?= json_encode($menu) ?>,
 			datasets: [{

@@ -14,7 +14,8 @@ class cTransaksi extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'status' => $this->mTransaksi->status_order()
+			'status' => $this->mTransaksi->status_order(),
+			'notif' => $this->mTransaksi->notif()
 		);
 		$this->protect->protect_admin();
 		$this->load->view('Admin/Layouts/head');

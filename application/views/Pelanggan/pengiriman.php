@@ -92,6 +92,24 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Name -->
+							<span class="txt9">
+								Metode Pembayaran
+							</span>
+							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<select name="metode" class="bo-rad-10 sizefull txt10 p-l-20">
+									<option value="">---Pilih Metode Pembayaran---</option>
+									<option value="1">COD</option>
+									<option value="2">Transfer</option>
+
+								</select>
+								<?= form_error('metode', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+					</div>
+
 					<div class="wrap-btn-booking flex-c-m m-t-6">
 						<!-- Button3 -->
 						<div class="row">

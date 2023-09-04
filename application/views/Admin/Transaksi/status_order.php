@@ -13,19 +13,19 @@
 
 					<div class="list-group list-group-flush" role="tablist">
 						<a class="list-group-item list-group-item-action active" data-toggle="list" href="#pesanan_masuk" role="tab">
-							Pesanan Masuk
+							Pesanan Masuk <span class="badge badge-danger"><?= $notif['pesanan_masuk']->jml ?></span>
 						</a>
 						<a class="list-group-item list-group-item-action" data-toggle="list" href="#konfirmasi" role="tab">
-							Konfirmasi
+							Konfirmasi <span class="badge badge-warning"><?= $notif['konfirmasi']->jml ?></span>
 						</a>
 						<a class="list-group-item list-group-item-action" data-toggle="list" href="#diproses" role="tab">
-							Pesanan Diproses
+							Pesanan Diproses <span class="badge badge-info"><?= $notif['diproses']->jml ?></span>
 						</a>
 						<a class="list-group-item list-group-item-action" data-toggle="list" href="#dikirim" role="tab">
-							Pesanan Dikirim
+							Pesanan Dikirim <span class="badge badge-success"><?= $notif['dikirim']->jml ?></span>
 						</a>
 						<a class="list-group-item list-group-item-action" data-toggle="list" href="#selesai" role="tab">
-							Selesai
+							Selesai <span class="badge badge-primary"><?= $notif['selesai']->jml ?></span>
 						</a>
 					</div>
 				</div>
@@ -46,6 +46,7 @@
 										<th class="text-center">Atas Nama</th>
 										<th class="text-center">Waktu Order</th>
 										<th class="text-center">Total Pembayaran</th>
+										<th class="text-center">Metode Pembayaran</th>
 										<th class="text-center">Actions</th>
 									</tr>
 								</thead>
@@ -56,9 +57,19 @@
 									?>
 										<tr>
 											<td class="text-center"><?= $no++ ?>.</td>
-											<td><?= $value->nama_plggn ?></td>
-											<td><?= $value->tgl_transaksi ?></td>
-											<td>Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?= $value->nama_plggn ?></td>
+											<td class="text-center"><?= $value->tgl_transaksi ?></td>
+											<td class="text-center">Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?php if ($value->metode_bayar == '1') {
+																	?>
+													<span class="badge badge-success">COD</span>
+												<?php
+																	} else {
+												?>
+													<span class="badge badge-warning">TRANSFER</span>
+												<?php
+																	} ?>
+											</td>
 											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
@@ -76,12 +87,13 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Atas Nama</th>
-										<th>Waktu Order</th>
-										<th>Total Pembayaran</th>
-										<th>Konfirmasi</th>
-										<th>Actions</th>
+										<th class="text-center">No</th>
+										<th class="text-center">Atas Nama</th>
+										<th class="text-center">Waktu Order</th>
+										<th class="text-center">Total Pembayaran</th>
+										<th class="text-center">Metode Pembayaran</th>
+										<th class="text-center">Konfirmasi</th>
+										<th class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -91,10 +103,20 @@
 									?>
 										<tr>
 											<td class="text-center"><?= $no++ ?>.</td>
-											<td><?= $value->nama_plggn ?></td>
-											<td><?= $value->tgl_transaksi ?></td>
-											<td>Rp. <?= number_format($value->total_bayar) ?></td>
-											<td><a class="btn btn-warning" href="<?= base_url('admin/ctransaksi/konfirmasi/' . $value->id_pesanan) ?>">Konfirmasi Pembayaran</a></td>
+											<td class="text-center"><?= $value->nama_plggn ?></td>
+											<td class="text-center"><?= $value->tgl_transaksi ?></td>
+											<td class="text-center">Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?php if ($value->metode_bayar == '1') {
+																	?>
+													<span class="badge badge-success">COD</span>
+												<?php
+																	} else {
+												?>
+													<span class="badge badge-warning">TRANSFER</span>
+												<?php
+																	} ?>
+											</td>
+											<td class="text-center"><a class="btn btn-warning" href="<?= base_url('admin/ctransaksi/konfirmasi/' . $value->id_pesanan) ?>">Konfirmasi Pembayaran</a></td>
 											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
@@ -112,12 +134,13 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Atas Nama</th>
-										<th>Waktu Order</th>
-										<th>Total Pembayaran</th>
-										<th>Kirim Pesanan</th>
-										<th>Actions</th>
+										<th class="text-center">No</th>
+										<th class="text-center">Atas Nama</th>
+										<th class="text-center">Waktu Order</th>
+										<th class="text-center">Total Pembayaran</th>
+										<th class="text-center">Metode Pembayaran</th>
+										<th class="text-center">Kirim Pesanan</th>
+										<th class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -127,10 +150,20 @@
 									?>
 										<tr>
 											<td class="text-center"><?= $no++ ?>.</td>
-											<td><?= $value->nama_plggn ?></td>
-											<td><?= $value->tgl_transaksi ?></td>
-											<td>Rp. <?= number_format($value->total_bayar) ?></td>
-											<td><a class="btn btn-success" href="<?= base_url('admin/ctransaksi/kirim/' . $value->id_pesanan) ?>">Kirim</a></td>
+											<td class="text-center"><?= $value->nama_plggn ?></td>
+											<td class="text-center"><?= $value->tgl_transaksi ?></td>
+											<td class="text-center">Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?php if ($value->metode_bayar == '1') {
+																	?>
+													<span class="badge badge-success">COD</span>
+												<?php
+																	} else {
+												?>
+													<span class="badge badge-warning">TRANSFER</span>
+												<?php
+																	} ?>
+											</td>
+											<td class="text-center"><a class="btn btn-success" href="<?= base_url('admin/ctransaksi/kirim/' . $value->id_pesanan) ?>">Kirim</a></td>
 											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
@@ -148,11 +181,12 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Atas Nama</th>
-										<th>Waktu Order</th>
-										<th>Total Pembayaran</th>
-										<th>Actions</th>
+										<th class="text-center">No</th>
+										<th class="text-center">Atas Nama</th>
+										<th class="text-center">Waktu Order</th>
+										<th class="text-center">Total Pembayaran</th>
+										<th class="text-center">Metode Pembayaran</th>
+										<th class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -162,9 +196,19 @@
 									?>
 										<tr>
 											<td class="text-center"><?= $no++ ?>.</td>
-											<td><?= $value->nama_plggn ?></td>
-											<td><?= $value->tgl_transaksi ?></td>
-											<td>Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?= $value->nama_plggn ?></td>
+											<td class="text-center"><?= $value->tgl_transaksi ?></td>
+											<td class="text-center">Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?php if ($value->metode_bayar == '1') {
+																	?>
+													<span class="badge badge-success">COD</span>
+												<?php
+																	} else {
+												?>
+													<span class="badge badge-warning">TRANSFER</span>
+												<?php
+																	} ?>
+											</td>
 											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
@@ -182,11 +226,12 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Atas Nama</th>
-										<th>Waktu Order</th>
-										<th>Total Pembayaran</th>
-										<th>Actions</th>
+										<th class="text-center">No</th>
+										<th class="text-center">Atas Nama</th>
+										<th class="text-center">Waktu Order</th>
+										<th class="text-center">Total Pembayaran</th>
+										<th class="text-center">Metode Pembayaran</th>
+										<th class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -196,9 +241,19 @@
 									?>
 										<tr>
 											<td class="text-center"><?= $no++ ?>.</td>
-											<td><?= $value->nama_plggn ?></td>
-											<td><?= $value->tgl_transaksi ?></td>
-											<td>Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?= $value->nama_plggn ?></td>
+											<td class="text-center"><?= $value->tgl_transaksi ?></td>
+											<td class="text-center">Rp. <?= number_format($value->total_bayar) ?></td>
+											<td class="text-center"><?php if ($value->metode_bayar == '1') {
+																	?>
+													<span class="badge badge-success">COD</span>
+												<?php
+																	} else {
+												?>
+													<span class="badge badge-warning">TRANSFER</span>
+												<?php
+																	} ?>
+											</td>
 											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php

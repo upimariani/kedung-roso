@@ -25,7 +25,7 @@
 					</span>
 
 					<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-						RUMAH MAKAN KEDUNG ROSO
+						MENERIMA PESAN ANTAR UNTUK WILAYAH KABUPATEN BREBES
 					</h2>
 
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
@@ -110,41 +110,66 @@
 				?>
 
 					<div class="col-md-4 p-t-30">
-						<form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
-							<input type="hidden" name="id" value="<?= $value->id_produk ?>">
-							<input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-							<input type="hidden" name="price" value="<?= $value->harga ?>">
-							<input type="hidden" name="qty" value="1">
-							<input type="hidden" name="picture" value="<?= $value->foto ?>">
-							<!-- Block1 -->
-							<div class="blo1">
-								<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-									<a href="#"><img style="width: 350px; height: 350px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="IMG-INTRO"></a>
+						<?php
+						if ($this->session->userdata('id') != '') {
+						?>
+							<form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
+								<input type="hidden" name="id" value="<?= $value->id_produk ?>">
+								<input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+								<input type="hidden" name="price" value="<?= $value->harga ?>">
+								<input type="hidden" name="qty" value="1">
+								<input type="hidden" name="picture" value="<?= $value->foto ?>">
+								<!-- Block1 -->
+								<div class="blo1">
+									<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+										<a href="#"><img style="width: 350px; height: 350px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="IMG-INTRO"></a>
+									</div>
+
+									<div class="wrap-text-blo1 p-t-35">
+
+										<h4 class="txt5 color0-hov trans-0-4 m-b-10">
+											<?= $value->nama_produk ?>
+										</h4>
+										<p><?= $value->deskripsi ?></p><br>
+
+										<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
+										<br>
+										<?php
+										if ($this->session->userdata('id') != '') {
+										?>
+											<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
+										<?php
+										}
+										?>
+
+
+									</div>
 								</div>
-
-								<div class="wrap-text-blo1 p-t-35">
-
-									<h4 class="txt5 color0-hov trans-0-4 m-b-10">
-										<?= $value->nama_produk ?>
-									</h4>
-									<p><?= $value->deskripsi ?></p><br>
-
-									<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
-									<br>
-									<?php
-									if ($this->session->userdata('id') != '') {
-									?>
+							</form>
+						<?php
+						} else {
+						?>
+							<form action="<?= base_url('pelanggan/cLogin') ?>">
+								<!-- Block1 -->
+								<div class="blo1">
+									<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+										<a href="#"><img style="width: 350px; height: 350px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="IMG-INTRO"></a>
+									</div>
+									<div class="wrap-text-blo1 p-t-35">
+										<h4 class="txt5 color0-hov trans-0-4 m-b-10">
+											<?= $value->nama_produk ?>
+										</h4>
+										<p><?= $value->deskripsi ?></p><br>
+										<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
+										<br>
 										<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
-									<?php
-									}
-									?>
-
-
+									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						<?php
+						}
+						?>
 					</div>
-
 				<?php
 				}
 				?>

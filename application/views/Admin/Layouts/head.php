@@ -67,7 +67,13 @@
 							<i class="align-middle" data-feather="truck"></i> <span class="align-middle">Transaksi</span>
 						</a>
 					</li>
-
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksiLangsung') {
+												echo 'active';
+											}  ?>">
+						<a class="sidebar-link" href="<?= base_url('Admin/cTransaksiLangsung') ?>">
+							<i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Transaksi Langsung</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<?= base_url('admin/clogin/logout') ?>">

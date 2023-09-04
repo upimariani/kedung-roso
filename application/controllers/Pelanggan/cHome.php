@@ -82,6 +82,7 @@ class cHome extends CI_Controller
 	public function checkout()
 	{
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
+		$this->form_validation->set_rules('metode', 'Metode Pembayaran', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->protect->protect();
@@ -93,14 +94,21 @@ class cHome extends CI_Controller
 			$this->load->view('Pelanggan/pengiriman', $data);
 			$this->load->view('Pelanggan/Layouts/footer');
 		} else {
+			$metode_bayar = $this->input->post('metode');
+			if ($metode_bayar == '1') {
+				$status_order = '1';
+			} else {
+				$status_order = '0';
+			}
 			$data = array(
 				'id_pelanggan' => $this->session->userdata('id'),
 				'tgl_transaksi' => date('Y-m-d'),
 				'total_bayar' => $this->input->post('total'),
-				'status_order' => '0',
+				'status_order' => $status_order,
 				'ongkir' => $this->input->post('ongkir'),
 				'status_bayar' => '0',
-				'alamat_detail' => $this->input->post('alamat_detail')
+				'alamat_detail' => $this->input->post('alamat_detail'),
+				'metode_bayar' => $this->input->post('metode')
 			);
 			$this->mKatalog->checkout($data);
 

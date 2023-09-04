@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 02:30 PM
+-- Generation Time: Aug 25, 2023 at 03:25 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,7 +42,8 @@ CREATE TABLE `detail_pesanan` (
 INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VALUES
 (1, 1, 3, 1),
 (2, 1, 4, 1),
-(3, 2, 4, 3);
+(3, 2, 4, 3),
+(4, 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -128,16 +129,18 @@ CREATE TABLE `pesanan` (
   `alamat_detail` varchar(125) NOT NULL,
   `ongkir` varchar(15) NOT NULL,
   `status_order` int(11) NOT NULL,
-  `status_bayar` int(11) NOT NULL
+  `status_bayar` int(11) NOT NULL,
+  `metode_bayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bayar`, `alamat_detail`, `ongkir`, `status_order`, `status_bayar`) VALUES
-(1, 1, '2023-07-20', '117000', 'Kuningan, Jawa Barat', '17000', 4, 1),
-(2, 1, '2023-07-24', '140000', 'Kuningan, Jawa Barat', '5000', 0, 0);
+INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bayar`, `alamat_detail`, `ongkir`, `status_order`, `status_bayar`, `metode_bayar`) VALUES
+(1, 1, '2023-07-20', '117000', 'Kuningan, Jawa Barat', '17000', 4, 1, 2),
+(2, 1, '2023-07-24', '140000', 'Kuningan, Jawa Barat', '5000', 0, 0, 2),
+(3, 1, '2023-08-16', '60000', 'Kuningan, Jawa Barat', '5000', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -235,7 +238,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `menu_makanan`
@@ -259,7 +262,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ulasan`
