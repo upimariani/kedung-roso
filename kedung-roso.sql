@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2023 at 03:25 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 24 Sep 2023 pada 10.01
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_pesanan`
+-- Struktur dari tabel `detail_pesanan`
 --
 
 CREATE TABLE `detail_pesanan` (
@@ -36,7 +36,7 @@ CREATE TABLE `detail_pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `detail_pesanan`
+-- Dumping data untuk tabel `detail_pesanan`
 --
 
 INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_makanan`
+-- Struktur dari tabel `menu_makanan`
 --
 
 CREATE TABLE `menu_makanan` (
@@ -60,7 +60,7 @@ CREATE TABLE `menu_makanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menu_makanan`
+-- Dumping data untuk tabel `menu_makanan`
 --
 
 INSERT INTO `menu_makanan` (`id_produk`, `nama_produk`, `harga`, `foto`, `deskripsi`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `menu_makanan` (`id_produk`, `nama_produk`, `harga`, `foto`, `deskri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nota`
+-- Struktur dari tabel `nota`
 --
 
 CREATE TABLE `nota` (
@@ -87,7 +87,7 @@ CREATE TABLE `nota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nota`
+-- Dumping data untuk tabel `nota`
 --
 
 INSERT INTO `nota` (`id_nota`, `id_pesanan`, `total_transaksi`, `tgl`, `cash`, `kartu_kredit`, `no_kartu_kredit`, `bukti_pembayaran`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `nota` (`id_nota`, `id_pesanan`, `total_transaksi`, `tgl`, `cash`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -109,7 +109,7 @@ CREATE TABLE `pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pelanggan`
+-- Dumping data untuk tabel `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `alamat`, `no_hp`, `username`, `password`) VALUES
@@ -118,7 +118,7 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `alamat`, `no_hp`, `usern
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesanan`
+-- Struktur dari tabel `pesanan`
 --
 
 CREATE TABLE `pesanan` (
@@ -134,7 +134,7 @@ CREATE TABLE `pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pesanan`
+-- Dumping data untuk tabel `pesanan`
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bayar`, `alamat_detail`, `ongkir`, `status_order`, `status_bayar`, `metode_bayar`) VALUES
@@ -145,26 +145,28 @@ INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bay
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ulasan`
+-- Struktur dari tabel `ulasan`
 --
 
 CREATE TABLE `ulasan` (
   `id_ulasan` int(11) NOT NULL,
-  `id_pesanan` int(11) NOT NULL,
-  `komentar` text NOT NULL
+  `id_detail` int(11) NOT NULL,
+  `komentar` text NOT NULL,
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ulasan`
+-- Dumping data untuk tabel `ulasan`
 --
 
-INSERT INTO `ulasan` (`id_ulasan`, `id_pesanan`, `komentar`) VALUES
-(1, 1, 'coba');
+INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`) VALUES
+(1, 1, 'enak banget', 4),
+(2, 2, 'sukaa pisann...', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -177,7 +179,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `no_hp`, `alamat`, `level_user`) VALUES
@@ -189,89 +191,89 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `no_hp`, `alamat`, `level
 --
 
 --
--- Indexes for table `detail_pesanan`
+-- Indeks untuk tabel `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indexes for table `menu_makanan`
+-- Indeks untuk tabel `menu_makanan`
 --
 ALTER TABLE `menu_makanan`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indexes for table `nota`
+-- Indeks untuk tabel `nota`
 --
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`id_nota`);
 
 --
--- Indexes for table `pelanggan`
+-- Indeks untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indexes for table `pesanan`
+-- Indeks untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id_pesanan`);
 
 --
--- Indexes for table `ulasan`
+-- Indeks untuk tabel `ulasan`
 --
 ALTER TABLE `ulasan`
   ADD PRIMARY KEY (`id_ulasan`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_pesanan`
+-- AUTO_INCREMENT untuk tabel `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `menu_makanan`
+-- AUTO_INCREMENT untuk tabel `menu_makanan`
 --
 ALTER TABLE `menu_makanan`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `nota`
+-- AUTO_INCREMENT untuk tabel `nota`
 --
 ALTER TABLE `nota`
   MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `pelanggan`
+-- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
   MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `pesanan`
+-- AUTO_INCREMENT untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
   MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ulasan`
+-- AUTO_INCREMENT untuk tabel `ulasan`
 --
 ALTER TABLE `ulasan`
-  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

@@ -27,6 +27,8 @@
 			</div>
 			<div class="col-lg-9 p-b-30">
 				<h2 class="mb-3">Pesanan Saya</h2>
+
+				<div id='console'></div>
 				<table class="view_detail table table-striped">
 					<thead>
 						<th class="text-center">No</th>
@@ -39,7 +41,8 @@
 						<?php
 						$no = 1;
 						foreach ($pesanan as $key => $value) {
-							if ($value->komentar == null) {
+							if ($value->status_order != '4') {
+
 						?>
 								<tr>
 									<td><?= $no++ ?></td>
@@ -101,22 +104,14 @@
 										<?php
 										}
 										?>
-
-
-
 										<?php
-										if ($value->status_order == '4' && $value->komentar == null) {
+										if ($value->status_order == '4') {
 										?>
-											<form action="<?= base_url('Pelanggan/cPesananSaya/komentar/' . $value->id_pesanan) ?>" method="POST">
-												<textarea name="komentar" class="form-control mt-3" placeholder="Isi komentar pesanan anda..."></textarea>
-												<button class="btn btn-success mt-3">Kirim</button>
-											</form>
-
-										<?php
+											<br>
+											<a href="<?= base_url('Pelanggan/cPesananSaya/penilaian_produk/' . $value->id_pesanan) ?>" class="btn btn-success mt-3">Penilaian Produk</button>
+											<?php
 										}
-
-										?>
-
+											?>
 									</td>
 									<td class="text-center"><button data-id="<?= $value->id_pesanan ?>" class="btn_detail btn btn-default"><i class="fa fa-bars"></i></button></td>
 								</tr>
@@ -161,7 +156,7 @@
 						<?php
 						$no = 1;
 						foreach ($pesanan as $key => $value) {
-							if ($value->status_order == '4' && $value->komentar != null) {
+							if ($value->status_order == '4') {
 								# code...
 
 						?>
@@ -221,17 +216,13 @@
 
 										<?php } ?>
 										<?php
-										if ($value->status_order == '4' && $value->komentar == null) {
+										if ($value->status_order == '4') {
 										?>
-											<form action="<?= base_url('Pelanggan/cPesananSaya/komentar/' . $value->id_pesanan) ?>" method="POST">
-												<textarea name="komentar" class="form-control" placeholder="Isi komentar pesanan anda..."></textarea>
-												<button class="btn btn-success mt-3">Kirim</button>
-											</form>
-
-										<?php
+											<br>
+											<a href="<?= base_url('Pelanggan/cPesananSaya/penilaian_produk/' . $value->id_pesanan) ?>" class="btn btn-success mt-3">Penilaian Produk</button>
+											<?php
 										}
-
-										?>
+											?>
 
 									</td>
 									<td class="text-center"><button data-id="<?= $value->id_pesanan ?>" class="btn_detail btn btn-default"><i class="fa fa-bars"></i></button></td>

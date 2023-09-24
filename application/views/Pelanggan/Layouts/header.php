@@ -31,6 +31,32 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/pato-master/') ?>css/main.css">
 	<!--===============================================================================================-->
+	<!-- StyleSheet -->
+	<style>
+		.checked {
+			color: orange;
+		}
+	</style>
+	<style>
+		.star {
+			margin: 0;
+			padding: 0;
+		}
+
+		.select {
+			cursor: pointer;
+			list-style-type: none;
+			display: inline-block;
+			color: #F0F0F0;
+			text-shadow: 0 0 1px #666666;
+			font-size: 20px;
+		}
+
+		.highlight,
+		.selected {
+			color: #F4B30A;
+		}
+	</style>
 </head>
 
 <body class="animsition">

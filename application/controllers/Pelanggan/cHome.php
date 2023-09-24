@@ -13,18 +13,21 @@ class cHome extends CI_Controller
 	{
 		$data = array(
 			'menu' => $this->mKatalog->menu(),
-			'kritik' => $this->mKatalog->ulasan()
+			// 'kritik' => $this->mKatalog->ulasan()
 		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
 		$this->load->view('Pelanggan/home', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
-	public function detail_produk()
+	public function detail_produk($id)
 	{
+		$data = array(
+			'detail_produk' => $this->mKatalog->detail_produk($id)
+		);
 		$this->load->view('Pelanggan/layouts/header');
 		$this->load->view('Pelanggan/layouts/aside');
-		$this->load->view('Pelanggan/detail_produk');
+		$this->load->view('Pelanggan/detail_produk', $data);
 		$this->load->view('Pelanggan/Layouts/footer');
 	}
 	public function cart()

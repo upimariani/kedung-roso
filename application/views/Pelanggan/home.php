@@ -11,7 +11,12 @@
 					<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
 						RUMAH MAKAN KEDUNG ROSO
 					</h2>
-
+					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+						<!-- Button1 -->
+						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
+							Whatsapp
+						</a>
+					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 
 					</div>
@@ -27,7 +32,12 @@
 					<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
 						MENERIMA PESAN ANTAR UNTUK WILAYAH KABUPATEN BREBES
 					</h2>
-
+					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+						<!-- Button1 -->
+						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
+							Whatsapp
+						</a>
+					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
 
 					</div>
@@ -43,7 +53,12 @@
 					<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
 						RUMAH MAKAN KEDUNG ROSO
 					</h2>
-
+					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+						<!-- Button1 -->
+						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
+							Whatsapp
+						</a>
+					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
 
 					</div>
@@ -134,14 +149,20 @@
 
 										<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
 										<br>
-										<?php
-										if ($this->session->userdata('id') != '') {
-										?>
-											<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
-										<?php
-										}
-										?>
+										<div class="row">
+											<div class="col-lg-6"><?php
+																	if ($this->session->userdata('id') != ' ') {
+																	?>
+													<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Add To Cart</button>
 
+												<?php
+																	}
+												?>
+											</div>
+											<div class="col-lg-6">
+												<a href="<?= base_url('Pelanggan/cHome/detail_produk/' . $value->id_produk) ?>" class="btn3 flex-c-m size18 txt11 trans-0-4" ?>Detail Produk</a>
+											</div>
+										</div>
 
 									</div>
 								</div>

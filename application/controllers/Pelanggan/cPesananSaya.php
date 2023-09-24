@@ -80,11 +80,22 @@ class cPesananSaya extends CI_Controller
 		$this->db->update('pesanan', $data);
 		redirect('pelanggan/cpesanansaya');
 	}
+	public function penilaian_produk($id)
+	{
+		$data = array(
+			'produk' => $this->mPesanan_Saya->produk_beli($id)
+		);
+		$this->load->view('Pelanggan/layouts/header');
+		$this->load->view('Pelanggan/layouts/aside');
+		$this->load->view('Pelanggan/penilaian_produk', $data);
+		$this->load->view('Pelanggan/Layouts/footer');
+	}
 	public function komentar($id)
 	{
 		$data = array(
-			'id_pesanan' => $id,
-			'komentar' => $this->input->post('komentar')
+			'id_detail' => $id,
+			'rating' => $this->input->post('rating'),
+			'komentar' => $this->input->post('ulasan')
 		);
 		$this->db->insert('ulasan', $data);
 		redirect('Pelanggan/cPesananSaya');

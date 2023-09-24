@@ -14,11 +14,6 @@
 </footer>
 </div>
 </div>
-
-
-
-
-
 <script src="<?= base_url('asset/adminkit/examples/') ?>js/vendor.js"></script>
 <script src="<?= base_url('asset/adminkit/examples/') ?>js/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -254,7 +249,113 @@
 		}
 	});
 </script>
-
+<script>
+	<?php
+	$pelanggan = $this->db->query("SELECT SUM(total_bayar) as total, nama_plggn FROM `pesanan` JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pelanggan GROUP BY pelanggan.id_pelanggan")->result();
+	foreach ($pelanggan as $key => $data) {
+		$nama_pelanggan[] = $data->nama_plggn;
+		$total_belanja[] = $data->total;
+	}
+	?>
+	var ctx = document.getElementById('pelanggan');
+	var grafik = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: <?= json_encode($nama_pelanggan) ?>,
+			datasets: [{
+				label: 'Grafik Total Transaksi Per Pelanggan',
+				data: <?= json_encode($total_belanja) ?>,
+				backgroundColor: [
+					'rgba(201, 77, 77, 1)',
+					'rgba(128, 98, 98, 1)',
+					'rgba(0, 0, 0, 1)',
+					'rgba(128, 128, 128, 1)',
+					'rgba(255, 99, 132, 0.80)',
+					'rgba(54, 162, 235, 0.80)',
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+					'rgba(201, 76, 76, 0.3)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(0, 140, 162, 1)',
+					'rgba(158, 109, 8, 1)',
+					'rgba(201, 76, 76, 0.8)',
+					'rgba(0, 129, 212, 1)',
+					'rgba(201, 77, 201, 1)',
+					'rgba(255, 207, 207, 1)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(128, 98, 98, 1)',
+					'rgba(0, 0, 0, 1)',
+					'rgba(128, 128, 128, 1)',
+					'rgba(255, 99, 132, 0.80)',
+					'rgba(54, 162, 235, 0.80)',
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+					'rgba(201, 76, 76, 0.3)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(0, 140, 162, 1)',
+					'rgba(158, 109, 8, 1)',
+					'rgba(201, 76, 76, 0.8)',
+					'rgba(0, 129, 212, 1)',
+					'rgba(201, 77, 201, 1)',
+					'rgba(255, 207, 207, 1)',
+				],
+				borderColor: [
+					'rgba(201, 77, 77, 1)',
+					'rgba(128, 98, 98, 1)',
+					'rgba(0, 0, 0, 1)',
+					'rgba(128, 128, 128, 1)',
+					'rgba(255, 99, 132, 0.80)',
+					'rgba(54, 162, 235, 0.80)',
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+					'rgba(201, 76, 76, 0.3)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(0, 140, 162, 1)',
+					'rgba(158, 109, 8, 1)',
+					'rgba(201, 76, 76, 0.8)',
+					'rgba(0, 129, 212, 1)',
+					'rgba(201, 77, 201, 1)',
+					'rgba(255, 207, 207, 1)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(128, 98, 98, 1)',
+					'rgba(0, 0, 0, 1)',
+					'rgba(128, 128, 128, 1)',
+					'rgba(255, 99, 132, 0.80)',
+					'rgba(54, 162, 235, 0.80)',
+					'rgba(255, 206, 86, 0.80)',
+					'rgba(75, 192, 192, 0.80)',
+					'rgba(153, 102, 255, 0.80)',
+					'rgba(255, 159, 64, 0.80)',
+					'rgba(201, 76, 76, 0.3)',
+					'rgba(201, 77, 77, 1)',
+					'rgba(0, 140, 162, 1)',
+					'rgba(158, 109, 8, 1)',
+					'rgba(201, 76, 76, 0.8)',
+					'rgba(0, 129, 212, 1)',
+					'rgba(201, 77, 201, 1)',
+					'rgba(255, 207, 207, 1)',
+				],
+				fill: false,
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}
+	});
+</script>
 
 </body>
 

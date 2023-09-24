@@ -35,6 +35,13 @@ class mKatalog extends CI_Model
 		$this->db->join('pelanggan', 'pesanan.id_pelanggan = pelanggan.id_pelanggan', 'left');
 		return $this->db->get()->result();
 	}
+
+	public function detail_produk($id)
+	{
+		$data['produk'] = $this->db->query("SELECT * FROM `menu_makanan` WHERE id_produk='" . $id . "'")->row();
+		$data['ulasan'] = $this->db->query("SELECT * FROM `ulasan` JOIN detail_pesanan ON ulasan.id_detail=detail_pesanan.id_detail JOIN pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk WHERE menu_makanan.id_produk='" . $id . "'")->result();
+		return $data;
+	}
 }
 
 /* End of file mKatalog.php */
