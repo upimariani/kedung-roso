@@ -89,13 +89,55 @@
 													</form>
 												</div>
 											</div>
-										<?php
+										</div>
+									<?php
 									} else {
-										?>
-											<span class="badge badge-success">Ulasan Berhasil Dikirim!</span>
-										<?php
+									?>
+										<span class="badge badge-success">Ulasan Berhasil Dikirim!</span><br>
+										<button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit<?= $value->id_ulasan ?>">
+											Perbaharui Penilaian
+										</button>
+										<div class="modal fade" id="edit<?= $value->id_ulasan ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Penilaian Produk <?= $value->nama_produk ?></h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<form action="<?= base_url('pelanggan/cpesanansaya/perbaharui_ulasan/' . $value->id_ulasan) ?>" method="POST">
+														<div class="modal-body">
+															<p>Masukkan Rating bintang anda sesuai penilaian anda...</p>
+															<div id='rate-0'>
+																<input type='hidden' value="<?= $value->rating ?>" name='rating' id='rating'>
+																<?php echo "
+                                                        <ul class='star' onMouseOut=\"resetRating('0')\">"; //untuk menampilan value dari bintang
+																for ($i = 1; $i <= 5; $i++) {
+																	if ($i <= 0) {
+																		$selected = "selected";
+																	} else {
+																		$selected = "";
+																	}
+																	echo "<li class='select' class='$selected' onmouseover=\" highlightStar(this,0)\" onmouseout=\"removeHighlight(0);\" onClick=\"addRating(this,0)\">&#9733;</li>";
+																}
+																echo "<ul>
+                                                    </div> "; ?>
+																<textarea rows="3" name="ulasan" class="form-control" placeholder="Masukkan komentar anda..." required><?= $value->komentar ?></textarea>
+
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																<button type="submit" class="btn btn-primary">Kirim Penilaian</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									<?php
 									}
-										?>
+									?>
 
 								</td>
 							</tr>

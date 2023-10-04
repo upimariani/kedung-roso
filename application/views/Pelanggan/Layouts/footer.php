@@ -113,7 +113,7 @@
 				console.log(data.produk.length);
 				for (var i = 0; i < data.produk.length; i++) {
 					console.log(data.produk.length);
-					$('#detail').append("<tr><td>" + data.produk[i].nama_produk + "</td><td>(" + data.produk[i].qty + ")x</td><td>Rp. " + data.produk[i].qty * (data.produk[i].harga) + "</td></tr>");
+					$('#detail').append("<tr><td>" + data.produk[i].nama_produk + "</td><td>(" + data.produk[i].qty + ")x</td><td>Rp. " + data.produk[i].qty * (data.produk[i].harga - ((data.produk[i].diskon / 100) * data.produk[i].harga)) + "</td></tr>");
 				}
 				$('.detail_pesanan').slideDown('slow');
 			},

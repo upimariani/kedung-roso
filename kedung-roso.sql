@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Sep 2023 pada 10.01
+-- Waktu pembuatan: 04 Okt 2023 pada 03.51
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `kedung-roso`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `balasan_ulasan`
+--
+
+CREATE TABLE `balasan_ulasan` (
+  `id_balasan` int(11) NOT NULL,
+  `id_ulasan` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `isi_balasan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `balasan_ulasan`
+--
+
+INSERT INTO `balasan_ulasan` (`id_balasan`, `id_ulasan`, `time`, `isi_balasan`) VALUES
+(1, 1, '2023-10-04 01:20:24', 'Terimakasih...');
 
 -- --------------------------------------------------------
 
@@ -43,7 +63,31 @@ INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VAL
 (1, 1, 3, 1),
 (2, 1, 4, 1),
 (3, 2, 4, 3),
-(4, 3, 3, 1);
+(4, 3, 3, 1),
+(5, 4, 3, 1),
+(6, 5, 3, 1),
+(7, 5, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `diskon`
+--
+
+CREATE TABLE `diskon` (
+  `kode_promo` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `nama_promo` varchar(125) NOT NULL,
+  `diskon` int(11) NOT NULL,
+  `tgl_diskon` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `diskon`
+--
+
+INSERT INTO `diskon` (`kode_promo`, `id_produk`, `nama_promo`, `diskon`, `tgl_diskon`) VALUES
+(2, 1, 'Sale in the day!', 5, '2023-10-01');
 
 -- --------------------------------------------------------
 
@@ -113,7 +157,8 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `alamat`, `no_hp`, `username`, `password`) VALUES
-(1, 'Asyila', 'Kuningan, Jawa Barat', '089987654343', 'asyila', 'asyila');
+(1, 'Asyila', 'Kuningan, Jawa Barat', '089987654343', 'asyila', 'asyila'),
+(2, 'Syarif', 'Kuningan, Jawa Barat', '089987656543', 'syarif', 'syarif');
 
 -- --------------------------------------------------------
 
@@ -140,7 +185,9 @@ CREATE TABLE `pesanan` (
 INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bayar`, `alamat_detail`, `ongkir`, `status_order`, `status_bayar`, `metode_bayar`) VALUES
 (1, 1, '2023-07-20', '117000', 'Kuningan, Jawa Barat', '17000', 4, 1, 2),
 (2, 1, '2023-07-24', '140000', 'Kuningan, Jawa Barat', '5000', 0, 0, 2),
-(3, 1, '2023-08-16', '60000', 'Kuningan, Jawa Barat', '5000', 1, 0, 1);
+(3, 1, '2023-08-16', '60000', 'Kuningan, Jawa Barat', '5000', 1, 0, 1),
+(4, 1, '2023-09-27', '57250', 'Kuningan, Jawa Barat', '5000', 1, 0, 1),
+(5, 0, '2023-10-01', '100000', '0', '0', 4, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -152,16 +199,16 @@ CREATE TABLE `ulasan` (
   `id_ulasan` int(11) NOT NULL,
   `id_detail` int(11) NOT NULL,
   `komentar` text NOT NULL,
-  `rating` int(11) NOT NULL
+  `rating` int(11) NOT NULL,
+  `time_ulasan` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ulasan`
 --
 
-INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`) VALUES
-(1, 1, 'enak banget', 4),
-(2, 2, 'sukaa pisann...', 5);
+INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`, `time_ulasan`) VALUES
+(1, 1, 'enak banget', 5, '2023-10-04 01:02:07');
 
 -- --------------------------------------------------------
 
@@ -191,10 +238,22 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `no_hp`, `alamat`, `level
 --
 
 --
+-- Indeks untuk tabel `balasan_ulasan`
+--
+ALTER TABLE `balasan_ulasan`
+  ADD PRIMARY KEY (`id_balasan`);
+
+--
 -- Indeks untuk tabel `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
   ADD PRIMARY KEY (`id_detail`);
+
+--
+-- Indeks untuk tabel `diskon`
+--
+ALTER TABLE `diskon`
+  ADD PRIMARY KEY (`kode_promo`);
 
 --
 -- Indeks untuk tabel `menu_makanan`
@@ -237,10 +296,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `balasan_ulasan`
+--
+ALTER TABLE `balasan_ulasan`
+  MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `diskon`
+--
+ALTER TABLE `diskon`
+  MODIFY `kode_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `menu_makanan`
@@ -258,19 +329,19 @@ ALTER TABLE `nota`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `ulasan`
 --
 ALTER TABLE `ulasan`
-  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

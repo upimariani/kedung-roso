@@ -2,7 +2,7 @@
 <section class="section-slide">
 	<div class="wrap-slick1">
 		<div class="slick1">
-			<div class="item-slick1 item1-slick1" style="background-image: url(<?= base_url('asset/foto.jpg') ?>);">
+			<div class="item-slick1 item1-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
 				<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-150">
 					<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
 						Selamat Datang di
@@ -13,9 +13,7 @@
 					</h2>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 						<!-- Button1 -->
-						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
-							Whatsapp
-						</a>
+
 					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 
@@ -23,7 +21,7 @@
 				</div>
 			</div>
 
-			<div class="item-slick1 item2-slick1" style="background-image: url(<?= base_url('asset/foto.jpg') ?>);">
+			<div class="item-slick1 item2-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
 				<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 					<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
 						Selamat Datang di
@@ -34,9 +32,7 @@
 					</h2>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 						<!-- Button1 -->
-						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
-							Whatsapp
-						</a>
+
 					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
 
@@ -44,7 +40,7 @@
 				</div>
 			</div>
 
-			<div class="item-slick1 item3-slick1" style="background-image: url(<?= base_url('asset/foto.jpg') ?>);">
+			<div class="item-slick1 item3-slick1" style="background-image: url(<?= base_url('asset/foto3.jpg') ?>);">
 				<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 					<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
 						Selamat Datang di
@@ -55,9 +51,7 @@
 					</h2>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 						<!-- Button1 -->
-						<a href="https://api.whatsapp.com/send?phone=628123456789" class="btn1 flex-c-m size1 txt3 trans-0-4">
-							Whatsapp
-						</a>
+
 					</div>
 					<div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
 
@@ -131,7 +125,7 @@
 							<form action="<?= base_url('pelanggan/chome/cart') ?>" method="POST">
 								<input type="hidden" name="id" value="<?= $value->id_produk ?>">
 								<input type="hidden" name="name" value="<?= $value->nama_produk ?>">
-								<input type="hidden" name="price" value="<?= $value->harga ?>">
+
 								<input type="hidden" name="qty" value="1">
 								<input type="hidden" name="picture" value="<?= $value->foto ?>">
 								<!-- Block1 -->
@@ -145,9 +139,29 @@
 										<h4 class="txt5 color0-hov trans-0-4 m-b-10">
 											<?= $value->nama_produk ?>
 										</h4>
+										<?php
+										if ($value->diskon != NULL) {
+										?>
+											<small class="badge badge-success"><?= $value->nama_promo ?> <?= $value->diskon ?>%</small>
+										<?php
+										}
+										?>
+
 										<p><?= $value->deskripsi ?></p><br>
 
-										<h5>Rp. <?= number_format($value->harga, 0)  ?></h5>
+										<h5>Rp. <?= number_format($value->harga - (($value->diskon / 100) * $value->harga), 0)  ?>
+											<?php
+											if ($value->diskon != NULL) {
+											?>
+												<del>Rp. <?= number_format($value->harga, 0)  ?></del>
+											<?php
+											}
+											?>
+										</h5>
+
+										<input type="hidden" name="price" value="<?= $value->harga - (($value->diskon / 100)  * $value->harga) ?>">
+
+
 										<br>
 										<div class="row">
 											<div class="col-lg-6"><?php
@@ -196,65 +210,5 @@
 				?>
 			</div>
 		</div>
-	</div>
-</section>
-
-
-
-
-<!-- Review -->
-<section class="section-review p-t-115">
-	<!-- - -->
-	<div class="title-review t-center m-b-2">
-		<span class="tit2 p-l-15 p-r-15">
-			Customers Say
-		</span>
-
-		<h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
-			Kritik dan Saran
-		</h3>
-	</div>
-
-	<!-- - -->
-	<div class="wrap-slick3">
-		<div class="slick3">
-
-			<?php
-			foreach ($kritik as $key => $value) {
-			?>
-				<div class="item-slick3 item1-slick3">
-					<div class="wrap-content-slide3 p-b-50 p-t-50">
-						<div class="container">
-
-
-							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-								<p class="t-center txt12 size15 m-l-r-auto">
-									<?= $value->komentar ?>
-								</p>
-
-								<div class="star-review fs-18 color0 flex-c-m m-t-12">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-								</div>
-
-								<div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-									<?= $value->nama_plggn ?> ˗ <?= $value->alamat ?>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			<?php
-			}
-			?>
-
-
-		</div>
-
-		<div class="wrap-slick3-dots m-t-30"></div>
 	</div>
 </section>

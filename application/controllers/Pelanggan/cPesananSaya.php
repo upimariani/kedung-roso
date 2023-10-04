@@ -100,6 +100,16 @@ class cPesananSaya extends CI_Controller
 		$this->db->insert('ulasan', $data);
 		redirect('Pelanggan/cPesananSaya');
 	}
+	public function perbaharui_ulasan($id)
+	{
+		$data = array(
+			'rating' => $this->input->post('rating'),
+			'komentar' => $this->input->post('ulasan')
+		);
+		$this->db->where('id_ulasan', $id);
+		$this->db->update('ulasan', $data);
+		redirect('Pelanggan/cPesananSaya');
+	}
 }
 
 /* End of file cPesananSaya.php */

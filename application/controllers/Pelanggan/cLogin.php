@@ -25,12 +25,24 @@ class cLogin extends CI_Controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 
+
 			$data = $this->mLogin_pelanggan->login($username, $password);
 			if ($data) {
 				$id = $data->id_pelanggan;
 				$nama_pelanggan = $data->nama_plggn;
 				$this->session->set_userdata('id', $id);
 				$this->session->set_userdata('nama_pelanggan', $nama_pelanggan);
+
+				//mengecek point transaksi yang telah dilakukan
+				$transaksi = $this->db->query("SELECT SUM(total_bayar) as total, id_pelanggan FROM `pesanan` WHERE id_pelanggan='" . $data->id_pelanggan . "'")->row();
+				if ($transaksi->total >= 100000) {
+					$level = '1';
+				} else if ($transaksi->total >= 500000) {
+					$level = '2';
+				} else {
+					$level = '3';
+				}
+				$this->session->set_userdata('level', $level);
 				redirect('pelanggan/chome');
 			} else {
 				$this->session->set_flashdata('error', 'Username dan Password Salah!');
@@ -42,7 +54,8 @@ class cLogin extends CI_Controller
 	{
 		$this->cart->destroy();
 		$this->session->unset_userdata('id');
-		$this->session->unset_userdata('member');
+		$this->session->unset_userdata('nama_pelanggan');
+		$this->session->unset_userdata('level');
 		$this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
 		redirect('pelanggan/clogin');
 	}

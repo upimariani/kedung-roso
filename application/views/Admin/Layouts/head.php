@@ -18,7 +18,31 @@
 	<script type="text/javascript" src="<?= base_url('asset/trix-main/dist/') ?>trix.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<style>
+		.checked {
+			color: orange;
+		}
+	</style>
+	<style>
+		.star {
+			margin: 0;
+			padding: 0;
+		}
 
+		.select {
+			cursor: pointer;
+			list-style-type: none;
+			display: inline-block;
+			color: #F0F0F0;
+			text-shadow: 0 0 1px #666666;
+			font-size: 20px;
+		}
+
+		.highlight,
+		.selected {
+			color: #F4B30A;
+		}
+	</style>
 
 </head>
 
@@ -57,6 +81,14 @@
 							<i class="align-middle" data-feather="upload"></i> <span class="align-middle">Produk</span>
 						</a>
 					</li>
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
+												echo 'active';
+											}  ?>">
+						<a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>">
+							<i class="align-middle" data-feather="percent"></i> <span class="align-middle">Diskon</span>
+						</a>
+					</li>
+
 
 
 
@@ -90,16 +122,7 @@
 					<i class="hamburger align-self-center"></i>
 				</a>
 
-				<form class="form-inline d-none d-sm-inline-block">
-					<div class="input-group input-group-navbar">
-						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
-						<div class="input-group-append">
-							<button class="btn" type="button">
-								<i class="align-middle" data-feather="search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">

@@ -5,8 +5,9 @@ class mKatalog extends CI_Model
 {
 	public function menu()
 	{
-		$this->db->select('*');
+		$this->db->select('nama_produk, menu_makanan.id_produk, harga, foto, deskripsi, nama_promo, diskon, tgl_diskon');
 		$this->db->from('menu_makanan');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
 		return $this->db->get()->result();
 	}
 	public function checkout($data)
@@ -39,7 +40,7 @@ class mKatalog extends CI_Model
 	public function detail_produk($id)
 	{
 		$data['produk'] = $this->db->query("SELECT * FROM `menu_makanan` WHERE id_produk='" . $id . "'")->row();
-		$data['ulasan'] = $this->db->query("SELECT * FROM `ulasan` JOIN detail_pesanan ON ulasan.id_detail=detail_pesanan.id_detail JOIN pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk WHERE menu_makanan.id_produk='" . $id . "'")->result();
+		$data['ulasan'] = $this->db->query("SELECT * FROM `ulasan` JOIN detail_pesanan ON ulasan.id_detail=detail_pesanan.id_detail JOIN pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk LEFT JOIN balasan_ulasan ON balasan_ulasan.id_ulasan=ulasan.id_ulasan WHERE menu_makanan.id_produk='" . $id . "'")->result();
 		return $data;
 	}
 }

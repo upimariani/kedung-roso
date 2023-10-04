@@ -55,7 +55,7 @@
 								<div class="mt-3">
 									<h4 class="txt33 p-b-14">
 										<?= $value->nama_plggn ?>
-									</h4>
+									</h4><small><?= $value->time_ulasan ?></small>
 
 									<div class="txt32 flex-w p-b-24">
 										<span>
@@ -118,10 +118,17 @@
 
 									</div>
 
-									<p>
-										<?= $value->komentar ?></p>
+									<p><?= $value->komentar ?></p>
+									<?php
+									if ($value->isi_balasan != NULL) {
+									?>
+										<p class="badge badge-success">Balasan Admin : <?= $value->time ?> <?= $value->isi_balasan ?></p>
 
+									<?php
+									}
+									?>
 								</div>
+								<hr>
 							<?php
 							}
 							?>

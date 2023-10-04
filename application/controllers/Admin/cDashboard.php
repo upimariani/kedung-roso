@@ -15,19 +15,34 @@ class cDashboard extends CI_Controller
 	{
 
 		$this->protect->protect_admin();
-		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/dashboard/dashboard');
-		$this->load->view('Admin/Layouts/footer');
-	}
-	public function detail_transaksi_pelanggan($id)
-	{
-		$this->protect->protect_admin();
 		$data = array(
-			'detail' => $this->mDashboard->detail_transaksi($id)
+			'ulasan' => $this->mDashboard->ulasan_pelanggan()
 		);
 		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/dashboard/detail_transaksi_pelanggan', $data);
+		$this->load->view('Admin/dashboard/dashboard', $data);
 		$this->load->view('Admin/Layouts/footer');
+	}
+
+	public function balas_ulasan($id)
+	{
+		$data = array(
+			'id_ulasan' => $id,
+			'isi_balasan' => $this->input->post('balasan')
+		);
+		$this->db->insert('balasan_ulasan', $data);
+		$this->session->set_flashdata('success', 'Balasan Ulasan Berhasil Dikirim!');
+		redirect('Admin/cDashboard');
+	}
+	public function hapus_ulasan($id)
+	{
+		$this->db->where('id_ulasan', $id);
+		$this->db->delete('ulasan');
+
+		$this->db->where('id_ulasan', $id);
+		$this->db->delete('balasan_ulasan');
+
+		$this->session->set_flashdata('success', 'Balasan Ulasan Berhasil Dihapus!');
+		redirect('Admin/cDashboard');
 	}
 }
 

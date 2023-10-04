@@ -81,6 +81,9 @@
 								<li>
 									<a href="<?= base_url('pelanggan/chome') ?>">Home</a>
 								</li>
+								<li>
+									<a href="https://api.whatsapp.com/send?phone=628123456789">Customer Service</a>
+								</li>
 								<?php
 								if ($this->session->userdata('id') != '') {
 								?>

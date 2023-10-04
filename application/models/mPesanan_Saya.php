@@ -20,6 +20,7 @@ class mPesanan_Saya extends CI_Model
 		$this->db->from('pesanan');
 		$this->db->join('detail_pesanan', 'pesanan.id_pesanan = detail_pesanan.id_pesanan', 'left');
 		$this->db->join('menu_makanan', 'menu_makanan.id_produk = detail_pesanan.id_produk', 'left');
+		$this->db->join('diskon', 'menu_makanan.id_produk = diskon.id_produk', 'left');
 		$this->db->where('pesanan.id_pesanan', $id);
 		return $this->db->get()->result();
 	}
@@ -31,7 +32,7 @@ class mPesanan_Saya extends CI_Model
 	//penilaian produk
 	public function produk_beli($id)
 	{
-		$this->db->select('detail_pesanan.id_detail, nama_produk, qty, foto, komentar');
+		$this->db->select('detail_pesanan.id_detail, nama_produk, qty, foto, komentar, id_ulasan, rating');
 		$this->db->from('pesanan');
 		$this->db->join('detail_pesanan', 'pesanan.id_pesanan = detail_pesanan.id_pesanan', 'left');
 		$this->db->join('menu_makanan', 'detail_pesanan.id_produk = menu_makanan.id_produk', 'left');

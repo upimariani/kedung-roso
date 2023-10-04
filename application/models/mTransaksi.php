@@ -25,7 +25,7 @@ class mTransaksi extends CI_Model
 	public function detail_tran_langsung($id)
 	{
 		$data['transaksi'] = $this->db->query("SELECT * FROM `pesanan` WHERE id_pesanan='" . $id . "';")->row();
-		$data['pesanan'] = $this->db->query("SELECT * FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk WHERE pesanan.id_pesanan='" . $id . "';")->result();
+		$data['pesanan'] = $this->db->query("SELECT * FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk LEFT JOIN diskon ON diskon.id_produk=menu_makanan.id_produk WHERE pesanan.id_pesanan='" . $id . "';")->result();
 		return $data;
 	}
 	public function notif()
@@ -40,7 +40,7 @@ class mTransaksi extends CI_Model
 	public function detail_pesanan($id)
 	{
 		$data['transaksi'] = $this->db->query("SELECT * FROM `pesanan` LEFT JOIN nota ON pesanan.id_pesanan=nota.id_pesanan JOIN pelanggan ON pelanggan.id_pelanggan=pesanan.id_pelanggan WHERE pesanan.id_pesanan='" . $id . "';")->row();
-		$data['pesanan'] = $this->db->query("SELECT * FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk WHERE pesanan.id_pesanan='" . $id . "';")->result();
+		$data['pesanan'] = $this->db->query("SELECT * FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk LEFT JOIN diskon ON diskon.id_produk=menu_makanan.id_produk  WHERE pesanan.id_pesanan='" . $id . "';")->result();
 		return $data;
 	}
 	public function status_transaksi($id, $data)
