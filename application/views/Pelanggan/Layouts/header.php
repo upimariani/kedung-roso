@@ -67,12 +67,7 @@
 		<div class="wrap-menu-header gradient1 trans-0-4">
 			<div class="container h-full">
 				<div class="wrap_header trans-0-3">
-					<!-- Logo -->
-					<div class="logo">
-						<a href="index.html">
-							<h5 class="text-danger">RUMAH MAKAN KEDUNG ROSO</h5>
-						</a>
-					</div>
+				
 
 					<!-- Menu -->
 					<div class="wrap_menu p-l-45 p-l-0-xl">

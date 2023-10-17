@@ -85,7 +85,7 @@
 												echo 'active';
 											}  ?>">
 						<a class="sidebar-link" href="<?= base_url('Admin/cDiskon') ?>">
-							<i class="align-middle" data-feather="percent"></i> <span class="align-middle">Diskon</span>
+							<i class="align-middle" data-feather="percent"></i> <span class="align-middle">Promo</span>
 						</a>
 					</li>
 

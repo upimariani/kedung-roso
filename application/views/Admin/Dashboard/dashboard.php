@@ -52,6 +52,29 @@
 						</div>
 					</div>
 				</div>
+				<div class="card flex-fill w-100">
+					<div class="card-header">
+						<h5 class="card-title">Grafik Analisis Produk Terjual</h5>
+						<!-- <h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6> -->
+					</div>
+					<div class="card-body">
+						<div class="chart">
+							<canvas id="produk"></canvas>
+						</div>
+					</div>
+
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Grafik Analisis Transaksi</h5>
+						<!-- <h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6> -->
+					</div>
+					<div class="card-body">
+						<div class="chart">
+							<canvas id="transaksi"></canvas>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-6 col-xl-6">
 				<div class="card">
@@ -187,31 +210,11 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-lg-6">
-				<div class="card flex-fill w-100">
-					<div class="card-header">
-						<h5 class="card-title">Grafik Analisis Produk Terjual</h5>
-						<!-- <h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6> -->
-					</div>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="produk"></canvas>
-						</div>
-					</div>
-				</div>
+
 			</div>
 
 			<div class="col-12 col-lg-6">
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title">Grafik Analisis Transaksi</h5>
-						<!-- <h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6> -->
-					</div>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="transaksi"></canvas>
-						</div>
-					</div>
-				</div>
+
 			</div>
 		</div>
 

@@ -118,7 +118,7 @@
 								?>
 									<div class="col-12 col-md-6 col-lg-4 mt-3">
 										<div class="card">
-											<img class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="Unsplash">
+											<img style="height: 150px;" class="card-img-top" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>" alt="Unsplash">
 											<div class="card-header">
 												<h4 class="card-title mb-2"><?= $value->nama_produk ?></h4>
 												<h5 class="card-title mb-0">Rp. <?= number_format($value->harga) ?></h5>

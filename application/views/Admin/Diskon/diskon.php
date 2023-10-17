@@ -1,7 +1,7 @@
 <main class="content">
 	<div class="container-fluid p-0">
 
-		<h1 class="h3 mb-3">Data Diskon Menu</h1>
+		<h1 class="h3 mb-3">Data Promo Menu</h1>
 		<?php
 		if ($this->session->userdata('success')) {
 		?>
@@ -25,16 +25,16 @@
 			<div class="col-6 col-xl-7">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title">Informasi Diskon Menu</h5>
+						<h5 class="card-title">Informasi Promo Menu</h5>
 					</div>
 					<table class="table">
 						<thead>
 							<tr>
 								<th>No</th>
 								<th>Nama Menu</th>
-								<th>Nama Diskon</th>
-								<th>Besar Diskon</th>
-								<th>Tgl Diskon</th>
+								<th>Nama Promo</th>
+								<th>Besar Promo</th>
+								<th>Tgl Promo</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -66,7 +66,7 @@
 			<div class="col-12 col-xl-5">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title">Tambah Data Diskon</h5>
+						<h5 class="card-title">Tambah Data Promo</h5>
 					</div>
 					<div class="card-body">
 						<form action="<?= base_url('admin/cDiskon') ?>" method="POST">
@@ -166,7 +166,7 @@ foreach ($diskon as $key => $value) {
 
 							<div class="col-lg-12">
 								<div class="form-group">
-									<label class="form-label">Besar Diskon</label>
+									<label class="form-label">Besar Promo</label>
 									<input type="text" value="<?= $value->diskon ?>" name="diskon" class="form-control" placeholder="Masukkan Besar Diskon">
 									<?= form_error('diskon', '<small class="form-text text-danger">', '</small>'); ?>
 								</div>
