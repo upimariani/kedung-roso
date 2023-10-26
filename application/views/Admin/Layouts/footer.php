@@ -18,6 +18,14 @@
 <script src="<?= base_url('asset/adminkit/examples/') ?>js/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<link href="<?= base_url('asset/') ?>DataTables/datatables.min.css" rel="stylesheet">
+
+<script src="<?= base_url('asset/') ?>DataTables/datatables.min.js"></script>
+<script>
+	$('#myTable').DataTable({
+		select: true
+	});
+</script>
 
 <script>
 	window.setTimeout(function() {

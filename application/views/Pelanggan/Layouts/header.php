@@ -67,7 +67,7 @@
 		<div class="wrap-menu-header gradient1 trans-0-4">
 			<div class="container h-full">
 				<div class="wrap_header trans-0-3">
-				
+
 
 					<!-- Menu -->
 					<div class="wrap_menu p-l-45 p-l-0-xl">
@@ -86,7 +86,9 @@
 									<li>
 										<a href="<?= base_url('pelanggan/cpesanansaya') ?>">Pesanan Saya</a>
 									</li>
-
+									<li>
+										<a href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
+									</li>
 
 									<?php
 									$cart = 0;

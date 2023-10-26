@@ -66,6 +66,29 @@
 						<div class="col-md-6">
 							<!-- Name -->
 							<span class="txt9">
+								Email
+							</span>
+							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $pelanggan->email ?>" type="text" name="email" placeholder="Masukkan Email Anda">
+								<?= form_error('email', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<!-- Name -->
+							<span class="txt9">
+								Tempat, Tanggal Lahir
+							</span>
+							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $pelanggan->ttl ?>" type="text" name="ttl" placeholder="Masukkan Tempat Tanggal Lahir Anda">
+								<?= form_error('ttl', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<!-- Name -->
+							<span class="txt9">
 								Username
 							</span>
 							<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
@@ -82,6 +105,16 @@
 							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
 								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $pelanggan->password ?>" type="text" name="password" placeholder="Masukkan Password Anda">
 								<?= form_error('password', '<small class="form-text text-danger">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<!-- Phone -->
+							<span class="txt9">
+								Makanan Favorite
+							</span>
+							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+								<textarea class="form-control" value="<?= $pelanggan->makanan ?>" name="makanan" placeholder="Masukkan Makanan Favorite Anda"></textarea>
+								<?= form_error('makanan', '<small class="form-text text-danger">', '</small>'); ?>
 							</div>
 						</div>
 					</div>

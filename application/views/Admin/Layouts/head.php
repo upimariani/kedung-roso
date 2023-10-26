@@ -73,6 +73,13 @@
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
 						</a>
 					</li>
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPelanggan') {
+												echo 'active';
+											}  ?>">
+						<a class="sidebar-link" href="<?= base_url('Admin/cPelanggan') ?>">
+							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Pelanggan</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProduk') {
 												echo 'active';
@@ -88,10 +95,6 @@
 							<i class="align-middle" data-feather="percent"></i> <span class="align-middle">Promo</span>
 						</a>
 					</li>
-
-
-
-
 					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cTransaksi') {
 												echo 'active';
 											}  ?>">
@@ -106,28 +109,28 @@
 							<i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Transaksi Langsung</span>
 						</a>
 					</li>
+					<li class="sidebar-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cChatting') {
+												echo 'active';
+											}  ?>">
+						<a class="sidebar-link" href="<?= base_url('Admin/cChatting') ?>">
+							<i class="align-middle" data-feather="phone"></i> <span class="align-middle">Chatting</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<?= base_url('admin/clogin/logout') ?>">
 							<i class="align-middle" data-feather="log-out"></i> <span class="align-middle">LogOut</span>
 						</a>
 					</li>
-
 			</div>
 		</nav>
-
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
 					<i class="hamburger align-self-center"></i>
 				</a>
-
-
-
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
-
-
 					</ul>
 				</div>
 			</nav>

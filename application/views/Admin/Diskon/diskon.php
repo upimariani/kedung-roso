@@ -27,7 +27,7 @@
 					<div class="card-header">
 						<h5 class="card-title">Informasi Promo Menu</h5>
 					</div>
-					<table class="table">
+					<table id="myTable" class="table">
 						<thead>
 							<tr>
 								<th>No</th>

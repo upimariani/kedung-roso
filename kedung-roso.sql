@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Okt 2023 pada 08.26
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Oct 26, 2023 at 04:05 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `balasan_ulasan`
+-- Table structure for table `balasan_ulasan`
 --
 
 CREATE TABLE `balasan_ulasan` (
@@ -37,7 +37,7 @@ CREATE TABLE `balasan_ulasan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `balasan_ulasan`
+-- Dumping data for table `balasan_ulasan`
 --
 
 INSERT INTO `balasan_ulasan` (`id_balasan`, `id_user`, `id_ulasan`, `time`, `isi_balasan`) VALUES
@@ -46,7 +46,30 @@ INSERT INTO `balasan_ulasan` (`id_balasan`, `id_user`, `id_ulasan`, `time`, `isi
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pesanan`
+-- Table structure for table `chatting`
+--
+
+CREATE TABLE `chatting` (
+  `id_chatting` int(11) NOT NULL,
+  `id_pelanggan` int(11) NOT NULL,
+  `pelanggan_send` text NOT NULL,
+  `admin_send` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chatting`
+--
+
+INSERT INTO `chatting` (`id_chatting`, `id_pelanggan`, `pelanggan_send`, `admin_send`, `time`) VALUES
+(1, 1, 'hai admin', '0', '2023-10-25 22:29:58'),
+(2, 1, '0', 'halo juga', '2023-10-26 13:31:33'),
+(3, 1, '0', 'ada yang bisa dibantu?', '2023-10-26 13:32:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_pesanan`
 --
 
 CREATE TABLE `detail_pesanan` (
@@ -57,7 +80,7 @@ CREATE TABLE `detail_pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_pesanan`
+-- Dumping data for table `detail_pesanan`
 --
 
 INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VALUES
@@ -698,12 +721,13 @@ INSERT INTO `detail_pesanan` (`id_detail`, `id_pesanan`, `id_produk`, `qty`) VAL
 (635, 635, 10, 2),
 (636, 636, 22, 15),
 (637, 637, 26, 12),
-(638, 638, 10, 5);
+(638, 638, 10, 5),
+(639, 639, 2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `diskon`
+-- Table structure for table `diskon`
 --
 
 CREATE TABLE `diskon` (
@@ -715,7 +739,7 @@ CREATE TABLE `diskon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `diskon`
+-- Dumping data for table `diskon`
 --
 
 INSERT INTO `diskon` (`kode_promo`, `id_produk`, `nama_promo`, `diskon`, `tgl_diskon`) VALUES
@@ -724,7 +748,7 @@ INSERT INTO `diskon` (`kode_promo`, `id_produk`, `nama_promo`, `diskon`, `tgl_di
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu_makanan`
+-- Table structure for table `menu_makanan`
 --
 
 CREATE TABLE `menu_makanan` (
@@ -736,7 +760,7 @@ CREATE TABLE `menu_makanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `menu_makanan`
+-- Dumping data for table `menu_makanan`
 --
 
 INSERT INTO `menu_makanan` (`id_produk`, `nama_produk`, `harga`, `foto`, `deskripsi`) VALUES
@@ -785,7 +809,7 @@ INSERT INTO `menu_makanan` (`id_produk`, `nama_produk`, `harga`, `foto`, `deskri
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nota`
+-- Table structure for table `nota`
 --
 
 CREATE TABLE `nota` (
@@ -800,7 +824,7 @@ CREATE TABLE `nota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nota`
+-- Dumping data for table `nota`
 --
 
 INSERT INTO `nota` (`id_nota`, `id_pesanan`, `total_transaksi`, `tgl`, `cash`, `kartu_kredit`, `no_kartu_kredit`, `bukti_pembayaran`) VALUES
@@ -809,7 +833,7 @@ INSERT INTO `nota` (`id_nota`, `id_pesanan`, `total_transaksi`, `tgl`, `cash`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelanggan`
+-- Table structure for table `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -817,55 +841,59 @@ CREATE TABLE `pelanggan` (
   `nama_plggn` varchar(125) NOT NULL,
   `alamat` text NOT NULL,
   `no_hp` varchar(15) NOT NULL,
+  `email` varchar(125) NOT NULL,
+  `ttl` varchar(125) NOT NULL,
+  `makanan` text NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pelanggan`
+-- Dumping data for table `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `alamat`, `no_hp`, `username`, `password`) VALUES
-(1, 'Uci Sunengasih', '088706686653', 'jl.raya Kluwut ', 'uci54', 'uci'),
-(2, 'Puspita Pangesti', '082313242960', 'Gg masjid walis', 'pita', 'pita'),
-(3, 'Joko Wiyarno', '082157694321', 'Jl. Raya Klampo', 'joko', 'joko'),
-(4, 'Triana dewi', '0895-3919-29461', 'Jl. Cendrawasih', 'triana', 'triana'),
-(5, 'Agus Budianto', '0838419764531', 'Gg.mawar Rt01 R', 'budi2', 'budi2'),
-(6, 'Retno ', '081287876528', 'Blok Masjid Des', 'retno53', 'retno53'),
-(7, 'Anis kusuma', '083837392608', 'Jl. Cendrawasih', 'Anis', 'Anis'),
-(8, 'Rapto Lestaluhu', '087743911076', 'Desa Ciputih Bl', 'rapto123', 'rapto123'),
-(9, 'Ramandha', '082227124796', 'Gg masjid walis', 'Ramanda', 'Ramanda'),
-(10, 'Tini Aulia dewi', '085712802583', 'Jl. Jend. Sudir', 'tini', 'tini54'),
-(11, 'Silvia Agusti', '082134154901', 'Warnasari No.70', 'Silvia', 'silvia08'),
-(12, 'Tiara Hermanda', '083143068224', 'Jalan Abdullah,', 'aramanda26@gmail.com', 'istrinyachanyeol'),
-(13, 'Daeni Rismawati ', '083840772793', 'GG masjid Walis', 'Daeni Rismawati ', 'Daeni21'),
-(14, 'Moh. Fiqih Erinsyah', '089677138599', 'Karangsari, Kec', 'mohfiqih', 'mohfiqih123'),
-(15, 'Tria istianah ', '0895391929461', 'Jl R.A Kartini ', 'triaistianah13@gmail.com', 'jakakurniawan04'),
-(16, 'Lisa Dewi M', '087715523094', 'Kemurang Wetan,', 'salibra', 'lisa1234'),
-(17, 'PUSPITA SARI', '087856677513', 'DESA KUBANGPUTA', 'puspita sari', 'puspitasari'),
-(18, 'Cicih Warniasih ', '083195979430', 'Desa Patala Kec', '@pacarhoshi', 'hoshiciwaSAH'),
-(19, 'Khaerum Anisa', '082328927129', 'Jalan raya alte', 'khaerumanisa2023', 'khaerumanisa#2023'),
-(20, 'Tantrianti ', '089634853105', 'Dusun kampung b', 'Titiew', 'Semangkabusuk'),
-(21, 'Widiyanti ', '083195088275', 'Ketanggungan Br', 'Widiyanti ', 'Widi123456'),
-(22, 'Sintia Wati Dewi', '083101465426', 'Desa cibadak ke', 'sintia dewi', 'sintia dewi'),
-(23, 'Wati Dewi', '083101356426', 'Desa Pejagan, k', 'wati dewi', 'wati dewi'),
-(24, 'Nyimas Ayu Marina', '0895467419909', 'Pesantunan Breb', 'Nyimas', 'marina200201'),
-(25, 'Deri Hermawan ', '0895392941314', 'GG.mbah ibu, RT', 'Dr.hermawan', 'Rubberpanjava'),
-(26, 'Helana Feronika', '081511894979', 'Jl. Raya Kluwut', 'helena ', 'helena'),
-(27, 'Siti nurhayati', '081548080547', 'Klampok, Kec. W', 'ayati', 'ayati12'),
-(28, 'Bagus arif', '087799111958', 'Desa grinting k', 'bagus arif', 'bagus'),
-(29, 'Lulu khotimah', '087799111958', 'Desa pakijangan', 'lulu khotimah', 'lulu1254'),
-(30, 'Lala Nurlaela', '08978499110', 'Pragpag lor blo', 'nurlaela', 'lalanurlaela'),
-(31, 'Wahyu Budiyono', '0895363028927', 'Pakijangan rt.0', 'Wahyu', 'Wahyu ganteng'),
-(32, 'Ar Arum', '085712799720', 'Gg mawar sengon', 'ar arum', 'arumkrupuk'),
-(33, 'Hendri', '085225783098', 'Desa Banjarhanj', 'hendri', 'hendri083'),
-(34, 'Erlinda', '082328937973', 'Desa cimohong s', 'Erlinda', 'erlindacantik'),
-(35, 'Berliana Sefy', '085727024208', 'Jl. Raya Pantur', 'Berliana', 'Berliana');
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_plggn`, `alamat`, `no_hp`, `email`, `ttl`, `makanan`, `username`, `password`) VALUES
+(1, 'Uci Sunengasih', '088706686653', 'jl.raya Kluwut ', '', '', '', 'uci54', 'uci'),
+(2, 'Puspita Pangesti', '082313242960', 'Gg masjid walis', '', '', '', 'pita', 'pita'),
+(3, 'Joko Wiyarno', '082157694321', 'Jl. Raya Klampo', '', '', '', 'joko', 'joko'),
+(4, 'Triana dewi', '0895-3919-29461', 'Jl. Cendrawasih', '', '', '', 'triana', 'triana'),
+(5, 'Agus Budianto', '0838419764531', 'Gg.mawar Rt01 R', '', '', '', 'budi2', 'budi2'),
+(6, 'Retno ', '081287876528', 'Blok Masjid Des', '', '', '', 'retno53', 'retno53'),
+(7, 'Anis kusuma', '083837392608', 'Jl. Cendrawasih', '', '', '', 'Anis', 'Anis'),
+(8, 'Rapto Lestaluhu', '087743911076', 'Desa Ciputih Bl', '', '', '', 'rapto123', 'rapto123'),
+(9, 'Ramandha', '082227124796', 'Gg masjid walis', '', '', '', 'Ramanda', 'Ramanda'),
+(10, 'Tini Aulia dewi', '085712802583', 'Jl. Jend. Sudir', '', '', '', 'tini', 'tini54'),
+(11, 'Silvia Agusti', '082134154901', 'Warnasari No.70', '', '', '', 'Silvia', 'silvia08'),
+(12, 'Tiara Hermanda', '083143068224', 'Jalan Abdullah,', '', '', '', 'aramanda26@gmail.com', 'istrinyachanyeol'),
+(13, 'Daeni Rismawati ', '083840772793', 'GG masjid Walis', '', '', '', 'Daeni Rismawati ', 'Daeni21'),
+(14, 'Moh. Fiqih Erinsyah', '089677138599', 'Karangsari, Kec', '', '', '', 'mohfiqih', 'mohfiqih123'),
+(15, 'Tria istianah ', '0895391929461', 'Jl R.A Kartini ', '', '', '', 'triaistianah13@gmail.com', 'jakakurniawan04'),
+(16, 'Lisa Dewi M', '087715523094', 'Kemurang Wetan,', '', '', '', 'salibra', 'lisa1234'),
+(17, 'PUSPITA SARI', '087856677513', 'DESA KUBANGPUTA', '', '', '', 'puspita sari', 'puspitasari'),
+(18, 'Cicih Warniasih ', '083195979430', 'Desa Patala Kec', '', '', '', '@pacarhoshi', 'hoshiciwaSAH'),
+(19, 'Khaerum Anisa', '082328927129', 'Jalan raya alte', '', '', '', 'khaerumanisa2023', 'khaerumanisa#2023'),
+(20, 'Tantrianti ', '089634853105', 'Dusun kampung b', '', '', '', 'Titiew', 'Semangkabusuk'),
+(21, 'Widiyanti ', '083195088275', 'Ketanggungan Br', '', '', '', 'Widiyanti ', 'Widi123456'),
+(22, 'Sintia Wati Dewi', '083101465426', 'Desa cibadak ke', '', '', '', 'sintia dewi', 'sintia dewi'),
+(23, 'Wati Dewi', '083101356426', 'Desa Pejagan, k', '', '', '', 'wati dewi', 'wati dewi'),
+(24, 'Nyimas Ayu Marina', '0895467419909', 'Pesantunan Breb', '', '', '', 'Nyimas', 'marina200201'),
+(25, 'Deri Hermawan ', '0895392941314', 'GG.mbah ibu, RT', '', '', '', 'Dr.hermawan', 'Rubberpanjava'),
+(26, 'Helana Feronika', '081511894979', 'Jl. Raya Kluwut', '', '', '', 'helena ', 'helena'),
+(27, 'Siti nurhayati', '081548080547', 'Klampok, Kec. W', '', '', '', 'ayati', 'ayati12'),
+(28, 'Bagus arif', '087799111958', 'Desa grinting k', '', '', '', 'bagus arif', 'bagus'),
+(29, 'Lulu khotimah', '087799111958', 'Desa pakijangan', '', '', '', 'lulu khotimah', 'lulu1254'),
+(30, 'Lala Nurlaela', '08978499110', 'Pragpag lor blo', '', '', '', 'nurlaela', 'lalanurlaela'),
+(31, 'Wahyu Budiyono', '0895363028927', 'Pakijangan rt.0', '', '', '', 'Wahyu', 'Wahyu ganteng'),
+(32, 'Ar Arum', '085712799720', 'Gg mawar sengon', '', '', '', 'ar arum', 'arumkrupuk'),
+(33, 'Hendri', '085225783098', 'Desa Banjarhanj', '', '', '', 'hendri', 'hendri083'),
+(34, 'Erlinda', '082328937973', 'Desa cimohong s', '', '', '', 'Erlinda', 'erlindacantik'),
+(35, 'Berliana Sefy', '085727024208', 'Jl. Raya Pantur', '', '', '', 'Berliana', 'Berliana'),
+(36, 'Rasyid', 'Kuningan, Jawa Barat', '089987123211', 'rasyid@gmail.com', 'Kuningan, 14 Februari 2000', '', 'rasyid', 'rasyid');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pesanan`
+-- Table structure for table `pesanan`
 --
 
 CREATE TABLE `pesanan` (
@@ -881,7 +909,7 @@ CREATE TABLE `pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pesanan`
+-- Dumping data for table `pesanan`
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bayar`, `alamat_detail`, `ongkir`, `status_order`, `status_bayar`, `metode_bayar`) VALUES
@@ -1523,12 +1551,13 @@ INSERT INTO `pesanan` (`id_pesanan`, `id_pelanggan`, `tgl_transaksi`, `total_bay
 (635, 29, '2023-09-27', '14000', 'Gg.mawar Rt01 RW03, Sengon Kec.Tanjung ,Kab. Brebes', '10000', 4, 1, 1),
 (636, 35, '2023-09-28', '175000', 'Blok Masjid Desa Tengguli, Kec. Tanjung Kabupaten Brebes, Jawa Tengah', '10000', 4, 1, 1),
 (637, 20, '2023-09-29', '58000', 'Jl. Cendrawasih No.533, RT.04/RW.05, brak, Tanjung, Kec.Tanjung Kabupaten Brebes', '10000', 4, 1, 1),
-(638, 32, '2023-09-30', '20000', 'Desa Ciputih Blok pasar Kec.Salem. Kab Brebes', '10000', 4, 1, 1);
+(638, 32, '2023-09-30', '20000', 'Desa Ciputih Blok pasar Kec.Salem. Kab Brebes', '10000', 4, 1, 1),
+(639, 2, '2023-10-12', '30000', '082313242960', '10000', 1, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ulasan`
+-- Table structure for table `ulasan`
 --
 
 CREATE TABLE `ulasan` (
@@ -1540,7 +1569,7 @@ CREATE TABLE `ulasan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ulasan`
+-- Dumping data for table `ulasan`
 --
 
 INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`, `time_ulasan`) VALUES
@@ -1549,7 +1578,7 @@ INSERT INTO `ulasan` (`id_ulasan`, `id_detail`, `komentar`, `rating`, `time_ulas
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -1562,7 +1591,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `no_hp`, `alamat`, `level_user`) VALUES
@@ -1574,113 +1603,125 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `no_hp`, `alamat`, `level
 --
 
 --
--- Indeks untuk tabel `balasan_ulasan`
+-- Indexes for table `balasan_ulasan`
 --
 ALTER TABLE `balasan_ulasan`
   ADD PRIMARY KEY (`id_balasan`);
 
 --
--- Indeks untuk tabel `detail_pesanan`
+-- Indexes for table `chatting`
+--
+ALTER TABLE `chatting`
+  ADD PRIMARY KEY (`id_chatting`);
+
+--
+-- Indexes for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indeks untuk tabel `diskon`
+-- Indexes for table `diskon`
 --
 ALTER TABLE `diskon`
   ADD PRIMARY KEY (`kode_promo`);
 
 --
--- Indeks untuk tabel `menu_makanan`
+-- Indexes for table `menu_makanan`
 --
 ALTER TABLE `menu_makanan`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `nota`
+-- Indexes for table `nota`
 --
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`id_nota`);
 
 --
--- Indeks untuk tabel `pelanggan`
+-- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indeks untuk tabel `pesanan`
+-- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id_pesanan`);
 
 --
--- Indeks untuk tabel `ulasan`
+-- Indexes for table `ulasan`
 --
 ALTER TABLE `ulasan`
   ADD PRIMARY KEY (`id_ulasan`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `balasan_ulasan`
+-- AUTO_INCREMENT for table `balasan_ulasan`
 --
 ALTER TABLE `balasan_ulasan`
   MODIFY `id_balasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pesanan`
+-- AUTO_INCREMENT for table `chatting`
 --
-ALTER TABLE `detail_pesanan`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=639;
+ALTER TABLE `chatting`
+  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `diskon`
+-- AUTO_INCREMENT for table `detail_pesanan`
+--
+ALTER TABLE `detail_pesanan`
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
+
+--
+-- AUTO_INCREMENT for table `diskon`
 --
 ALTER TABLE `diskon`
   MODIFY `kode_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `menu_makanan`
+-- AUTO_INCREMENT for table `menu_makanan`
 --
 ALTER TABLE `menu_makanan`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `nota`
+-- AUTO_INCREMENT for table `nota`
 --
 ALTER TABLE `nota`
   MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `pelanggan`
+-- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `pesanan`
+-- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=639;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
 
 --
--- AUTO_INCREMENT untuk tabel `ulasan`
+-- AUTO_INCREMENT for table `ulasan`
 --
 ALTER TABLE `ulasan`
   MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

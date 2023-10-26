@@ -223,7 +223,7 @@
 							<div class="card-header">
 								<h5 class="card-title">Pesanan Selesai</h5>
 							</div>
-							<table class="table">
+							<table id="myTable" class="table">
 								<thead>
 									<tr>
 										<th class="text-center">No</th>

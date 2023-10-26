@@ -27,6 +27,9 @@ class cProfil extends CI_Controller
 		$this->form_validation->set_rules('no_hp', 'No Telepon', 'required|min_length[11]|max_length[13]');
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('ttl', 'Tempat, Tanggal Lahir', 'required');
+		$this->form_validation->set_rules('makanan', 'Makanan Favorite', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
@@ -42,7 +45,10 @@ class cProfil extends CI_Controller
 				'alamat' => $this->input->post('alamat'),
 				'no_hp' => $this->input->post('no_hp'),
 				'username' => $this->input->post('username'),
-				'password' => $this->input->post('password')
+				'password' => $this->input->post('password'),
+				'email' => $this->input->post('email'),
+				'ttl' => $this->input->post('ttl'),
+				'makanan' => $this->input->post('makanan')
 			);
 			$this->db->where('id_pelanggan', $id);
 			$this->db->update('pelanggan', $data);

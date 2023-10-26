@@ -22,60 +22,63 @@
 
 
 		<div class="row">
-			<div class="col-6 col-xl-7">
+			<div class="col-8 col-xl-8">
 				<div class="card">
 					<div class="card-header">
 						<h5 class="card-title">Informasi User</h5>
 					</div>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>No</th>
-								<th>Username</th>
-								<th>Password</th>
-								<th>No Telepon</th>
-								<th>Alamat</th>
-								<th>Level User</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach ($user as $key => $value) {
-							?>
+					<div class="card-body">
+						<table id="myTable" class="table">
+							<thead>
 								<tr>
-									<td><?= $no++ ?></td>
-									<td><?= $value->username ?></td>
-									<td><?= $value->password ?></td>
-									<td><?= $value->no_hp ?></td>
-									<td><?= $value->alamat ?></td>
-									<td><?php
-										if ($value->level_user == '1') {
-										?>
-											<span class="bage badge-success">Admin</span>
-										<?php
-										} else {
-										?>
-											<span class="bage badge-danger">Pemilik</span>
-										<?php
-										}
-										?>
-									</td>
-									<td class="table-action">
-										<button class="btn btn-success" data-toggle="modal" data-target="#edit<?= $value->id_user ?>"><i class="align-middle" data-feather="edit-2"></i></button>
-										<button class="btn btn-danger" data-toggle="modal" data-target="#hapus<?= $value->id_user ?>"><i class="align-middle" data-feather="trash"></i></button>
-									</td>
+									<th>No</th>
+									<th>Username</th>
+									<th>Password</th>
+									<th>No Telepon</th>
+									<th>Alamat</th>
+									<th>Level User</th>
+									<th>Action</th>
 								</tr>
-							<?php
-							}
-							?>
+							</thead>
+							<tbody>
+								<?php
+								$no = 1;
+								foreach ($user as $key => $value) {
+								?>
+									<tr>
+										<td><?= $no++ ?></td>
+										<td><?= $value->username ?></td>
+										<td><?= $value->password ?></td>
+										<td><?= $value->no_hp ?></td>
+										<td><?= $value->alamat ?></td>
+										<td><?php
+											if ($value->level_user == '1') {
+											?>
+												<span class="bage badge-success">Admin</span>
+											<?php
+											} else {
+											?>
+												<span class="bage badge-danger">Pemilik</span>
+											<?php
+											}
+											?>
+										</td>
+										<td class="table-action">
+											<button class="btn btn-success" data-toggle="modal" data-target="#edit<?= $value->id_user ?>"><i class="align-middle" data-feather="edit-2"></i></button>
+											<button class="btn btn-danger" data-toggle="modal" data-target="#hapus<?= $value->id_user ?>"><i class="align-middle" data-feather="trash"></i></button>
+										</td>
+									</tr>
+								<?php
+								}
+								?>
 
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
+
 				</div>
 			</div>
-			<div class="col-12 col-xl-5">
+			<div class="col-4 col-xl-4">
 				<div class="card">
 					<div class="card-header">
 						<h5 class="card-title">Tambah Data User</h5>
