@@ -7,6 +7,7 @@ class mPelanggan extends CI_Model
 	{
 		return $this->db->query("SELECT * FROM `pelanggan`")->result();
 	}
+	
 }
 
 /* End of file mPelanggan.php */

@@ -30,7 +30,7 @@
 				<div class="card-header">
 					<h5 class="card-title">Informasi Keranjang</h5>
 				</div>
-				<?php echo form_open('Admin/cTransaksiLangsung/update_cart'); ?>
+
 				<table class="table">
 					<thead>
 						<tr>
@@ -44,6 +44,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php echo form_open('Admin/cTransaksiLangsung/update_cart'); ?>
 						<?php
 						$no = 1;
 						$i = 1;
@@ -65,22 +66,41 @@
 							$i++;
 						}
 						?>
-						<tr>
-							<td></td>
-							<td><a href="<?= base_url('Admin/cTransaksiLangsung/selesai') ?>" class="btn btn-success">Selesai</a></td>
-
-							<td></td>
-							<td></td>
-
-							<td>Total: </td>
-							<td>
-								<h4>Rp. <?php echo $this->cart->format_number($this->cart->total()); ?></h4>
-							</td>
-							<td></td>
-						</tr>
+						<?php echo form_close(); ?>
+						<form action="<?= base_url('Admin/cTransaksiLangsung/selesai') ?>" method="POST">
+							<tr>
+								<td>Pesanan Atas Nama:</td>
+								<td colspan="3">
+									<select id="cars" name="pelanggan" class="js-example-basic-single form-control">
+										<option>---Pilih Nama Pelanggan---</option>
+										<?php
+										foreach ($pelanggan as $key => $value) {
+										?>
+											<option value="<?= $value->id_pelanggan  ?>"><?= $value->nama_plggn ?> | <?= $value->alamat ?></option>
+										<?php
+										}
+										?>
+									</select>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><button type="submit" class="btn btn-success">Selesai</button></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>Total: </td>
+								<td>
+									<h4>Rp. <?php echo $this->cart->format_number($this->cart->total()); ?></h4>
+								</td>
+								<td></td>
+							</tr>
+						</form>
 					</tbody>
 				</table>
-				<?php echo form_close(); ?>
+
 			</div>
 		<?php
 		}

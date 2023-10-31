@@ -44,7 +44,7 @@
 							</span>
 
 							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $pelanggan->no_hp ?>" type="number" name="no_hp" placeholder="Masukkan Password Anda">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" value="<?= $pelanggan->no_hp ?>" type="text" name="no_hp" placeholder="Masukkan Password Anda">
 								<?= form_error('no_hp', '<small class="form-text text-danger">', '</small>'); ?>
 							</div>
 						</div>
@@ -113,7 +113,7 @@
 								Makanan Favorite
 							</span>
 							<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-								<textarea class="form-control" value="<?= $pelanggan->makanan ?>" name="makanan" placeholder="Masukkan Makanan Favorite Anda"></textarea>
+								<textarea class="form-control" name="makanan" placeholder="Masukkan Makanan Favorite Anda"><?= $pelanggan->makanan ?></textarea>
 								<?= form_error('makanan', '<small class="form-text text-danger">', '</small>'); ?>
 							</div>
 						</div>

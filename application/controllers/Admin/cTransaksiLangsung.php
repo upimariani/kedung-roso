@@ -11,6 +11,7 @@ class cTransaksiLangsung extends CI_Controller
 		$this->load->model('mProduk');
 		$this->load->model('mKatalog');
 		$this->load->model('mTransaksi');
+		$this->load->model('mPelanggan');
 	}
 
 	public function index()
@@ -18,7 +19,8 @@ class cTransaksiLangsung extends CI_Controller
 		$this->protect->protect_admin();
 		$data = array(
 			'produk' => $this->mProduk->select(),
-			'transaksi' => $this->mTransaksi->transaksiLangsung()
+			'transaksi' => $this->mTransaksi->transaksiLangsung(),
+			'pelanggan' => $this->mPelanggan->select()
 		);
 		$this->load->view('Admin/Layouts/head');
 		$this->load->view('Admin/TransaksiLangsung/vTransaksiLangsung', $data);
@@ -71,7 +73,7 @@ class cTransaksiLangsung extends CI_Controller
 	public function selesai()
 	{
 		$data = array(
-			'id_pelanggan' => 0,
+			'id_pelanggan' => $this->input->post('pelanggan'),
 			'tgl_transaksi' => date('Y-m-d'),
 			'total_bayar' => $this->cart->total(),
 			'status_order' => '4',

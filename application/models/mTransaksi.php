@@ -24,7 +24,7 @@ class mTransaksi extends CI_Model
 	//detail transaksi
 	public function detail_tran_langsung($id)
 	{
-		$data['transaksi'] = $this->db->query("SELECT * FROM `pesanan` WHERE id_pesanan='" . $id . "';")->row();
+		$data['transaksi'] = $this->db->query("SELECT * FROM `pesanan` JOIN pelanggan ON pesanan.id_pelanggan=pelanggan.id_pelanggan WHERE id_pesanan='" . $id . "';")->row();
 		$data['pesanan'] = $this->db->query("SELECT * FROM `pesanan` JOIN detail_pesanan ON pesanan.id_pesanan=detail_pesanan.id_pesanan JOIN menu_makanan ON menu_makanan.id_produk=detail_pesanan.id_produk LEFT JOIN diskon ON diskon.id_produk=menu_makanan.id_produk WHERE pesanan.id_pesanan='" . $id . "';")->result();
 		return $data;
 	}

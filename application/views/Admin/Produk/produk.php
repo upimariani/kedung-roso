@@ -48,9 +48,9 @@
 									</td>
 									<td class="d-none d-md-table-cell">Rp. <?= number_format($value->harga, 0) ?></td>
 									<td class="d-none d-md-table-cell"><?= $value->deskripsi ?></td>
-									<td class="table-action">
-										<a href="<?= base_url('admin/cproduk/update/' . $value->id_produk) ?>"><i class="align-middle" data-feather="edit-2"></i></a>
-										<a href="<?= base_url('admin/cproduk/delete/' . $value->id_produk) ?>"><i class="align-middle" data-feather="trash"></i></a>
+									<td>
+										<a href="<?= base_url('admin/cproduk/update/' . $value->id_produk) ?>" class="btn btn-warning">Update</a>
+										<a href="<?= base_url('admin/cproduk/delete/' . $value->id_produk) ?>" class="btn btn-danger">Hapus</a>
 									</td>
 								</tr>
 							<?php } ?>

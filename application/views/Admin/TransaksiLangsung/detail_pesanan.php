@@ -10,7 +10,8 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="text-muted">No Transaksi.</div>
-								<strong><?= $detail['transaksi']->tgl_transaksi . $detail['transaksi']->id_pesanan ?></strong>
+								<strong><?= $detail['transaksi']->tgl_transaksi . $detail['transaksi']->id_pesanan ?></strong><br>
+								<strong>Atas Nama : <?= $detail['transaksi']->nama_plggn ?></strong>
 							</div>
 							<div class="col-md-6 text-md-right">
 								<div class="text-muted">Tanggal</div>
