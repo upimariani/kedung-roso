@@ -17,6 +17,13 @@ class cChatting extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->protect->protect();
+			$pelanggan = '0';
+			$update_status = array(
+				'status' => '1'
+			);
+			$this->db->where('id_pelanggan', $this->session->userdata('id'));
+			$this->db->where('pelanggan_send', $pelanggan);
+			$this->db->update('chatting', $update_status);
 			$data = array(
 				'pesan' => $this->mChatting->select()
 			);

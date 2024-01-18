@@ -32,7 +32,7 @@
 						<!-- - -->
 						<div class="pic-blo4  bo-rad-10 pos-relative">
 							<h3>Chatting</h3>
-
+							<p class="text-success">Silahkan hubungi admin untuk menanyakan pengiriman dan menu makanan</p>
 						</div>
 						<!-- - -->
 						<?php

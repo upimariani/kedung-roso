@@ -22,6 +22,15 @@ class cChatting extends CI_Controller
 	}
 	public function detail_chatting($id)
 	{
+		$admin = '0';
+		$update_status = array(
+			'status' => '1'
+		);
+		$this->db->where('id_pelanggan', $id);
+		$this->db->where('admin_send', $admin);
+		$this->db->update('chatting', $update_status);
+
+
 		$data = array(
 			'id_pelanggan' => $id,
 			'chat' => $this->mChatting->detail_chatting($id)

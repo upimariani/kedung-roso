@@ -5,6 +5,9 @@
 		<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#defaultModalPrimary">
 			Create Pelanggan
 		</button>
+		<a href="<?= base_url('Admin/cPelanggan/cetak') ?>" class="btn btn-warning mb-3">
+			Cetak Pelanggan
+		</a>
 		<div class="modal fade" id="defaultModalPrimary" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">

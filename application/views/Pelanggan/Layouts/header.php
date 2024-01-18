@@ -87,7 +87,16 @@
 										<a href="<?= base_url('pelanggan/cpesanansaya') ?>">Pesanan Saya</a>
 									</li>
 									<li>
-										<a href="<?= base_url('pelanggan/cchatting') ?>">Chat</a>
+										<?php
+										$notif = $this->db->query("SELECT COUNT(id_chatting) as notif FROM `chatting` WHERE pelanggan_send='0' AND id_pelanggan='1' AND status='0'")->row();
+										?>
+										<a href="<?= base_url('pelanggan/cchatting') ?>">Chat <?php
+																								if ($notif->notif != '0') {
+																								?>
+												<span class="badge badge-success"><?= $notif->notif  ?></span>
+											<?php
+																								}
+											?></a>
 									</li>
 
 									<?php

@@ -40,10 +40,20 @@
 							<?php
 							$no = 1;
 							foreach ($chat as $key => $value) {
+								$notif = $this->db->query("SELECT COUNT(id_chatting) as notif FROM `chatting` WHERE pelanggan_send !='0' AND id_pelanggan='" . $value->id_pelanggan . "' AND status='0'")->row();
 							?>
 								<tr>
 									<td><?= $no++ ?></td>
-									<td><?= $value->nama_plggn ?></td>
+									<td><?= $value->nama_plggn ?>
+										<?php
+										if ($notif->notif != '0') {
+										?>
+											<span class="badge badge-success"><?= $notif->notif  ?></span>
+										<?php
+										}
+										?>
+
+									</td>
 									<td><?= $value->time ?></td>
 
 									<td class="table-action">
