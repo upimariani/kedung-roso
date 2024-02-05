@@ -49,7 +49,7 @@
 						?>
 
 
-						<form action="<?= base_url('Admin/cChatting/balasan/' . $id_pelanggan) ?>" method="POST">
+						<form action="<?= base_url('AdminCS/cChatting/balasan/' . $id_pelanggan) ?>" method="POST">
 							<textarea class="form-control mt-3" rows="5" name="balasan" placeholder="Tuliskan Balasan Anda..." required></textarea>
 							<button type="submit" class="btn btn-primary btn-block mt-2">Kirim Balasan</button>
 						</form>

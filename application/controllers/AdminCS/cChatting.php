@@ -16,9 +16,9 @@ class cChatting extends CI_Controller
 		$data = array(
 			'chat' => $this->mChatting->chat_pelanggan()
 		);
-		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/Chatting/vChatting', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('AdminCS/Layouts/head');
+		$this->load->view('AdminCS/Chatting/vChatting', $data);
+		$this->load->view('AdminCS/Layouts/footer');
 	}
 	public function detail_chatting($id)
 	{
@@ -35,9 +35,9 @@ class cChatting extends CI_Controller
 			'id_pelanggan' => $id,
 			'chat' => $this->mChatting->detail_chatting($id)
 		);
-		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/Chatting/vDetailChatting', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('AdminCS/Layouts/head');
+		$this->load->view('AdminCS/Chatting/vDetailChatting', $data);
+		$this->load->view('AdminCS/Layouts/footer');
 	}
 	public function balasan($id)
 	{
@@ -48,7 +48,7 @@ class cChatting extends CI_Controller
 		);
 		$this->db->insert('chatting', $data);
 		$this->session->set_flashdata('success', 'Balasan Chatting Berhasil Dikirim!');
-		redirect('Admin/cChatting/detail_chatting/' . $id);
+		redirect('AdminCS/cChatting/detail_chatting/' . $id);
 	}
 }
 

@@ -56,9 +56,17 @@
 											?>
 												<span class="bage badge-success">Admin</span>
 											<?php
-											} else {
+											} elseif ($value->level_user == '2') {
 											?>
 												<span class="bage badge-danger">Pemilik</span>
+											<?php
+											} else if ($value->level_user == '3') {
+											?>
+												<span class="bage badge-info">Admin Kasir</span>
+											<?php
+											} else if ($value->level_user == '4') {
+											?>
+												<span class="bage badge-warning">Admin CS</span>
 											<?php
 											}
 											?>
@@ -126,7 +134,13 @@
 											<option value="">---Pilih Level User---</option>
 											<option value="1" <?php if (set_value('level') == '1') {
 																	echo 'selected';
-																} ?>>Admin</option>
+																} ?>>Admin Makanan</option>
+											<option value="3" <?php if (set_value('level') == '3') {
+																	echo 'selected';
+																} ?>>Admin Kasir</option>
+											<option value="4" <?php if (set_value('level') == '4') {
+																	echo 'selected';
+																} ?>>Admin CS</option>
 											<option value="2" <?php if (set_value('level') == '2') {
 																	echo 'selected';
 																} ?>>Pemilik</option>
@@ -204,6 +218,12 @@ foreach ($user as $key => $value) {
 										<option value="1" <?php if ($value->level_user == '1') {
 																echo 'selected';
 															} ?>>Admin</option>
+										<option value="3" <?php if ($value->level_user == '3') {
+																echo 'selected';
+															} ?>>Admin Kasir</option>
+										<option value="4" <?php if ($value->level_user == '4') {
+																echo 'selected';
+															} ?>>Admin CS</option>
 										<option value="2" <?php if ($value->level_user == '2') {
 																echo 'selected';
 															} ?>>Pemilik</option>

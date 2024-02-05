@@ -44,7 +44,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php echo form_open('Admin/cTransaksiLangsung/update_cart'); ?>
+						<?php echo form_open('AdminKasir/cTransaksiLangsung/update_cart'); ?>
 						<?php
 						$no = 1;
 						$i = 1;
@@ -60,14 +60,14 @@
 								</td>
 								<td>Rp. <?= number_format($value['price'], 0)  ?></td>
 								<td>Rp. <?= number_format($value['price'] * $value["qty"])  ?></td>
-								<td><a href="<?= base_url('Admin/cTransaksiLangsung/delete/' . $value['rowid']) ?>">Hapus</a></td>
+								<td><a href="<?= base_url('AdminKasir/cTransaksiLangsung/delete/' . $value['rowid']) ?>">Hapus</a></td>
 							</tr>
 						<?php
 							$i++;
 						}
 						?>
 						<?php echo form_close(); ?>
-						<form action="<?= base_url('Admin/cTransaksiLangsung/selesai') ?>" method="POST">
+						<form action="<?= base_url('AdminKasir/cTransaksiLangsung/selesai') ?>" method="POST">
 							<tr>
 								<td>Pesanan Atas Nama:</td>
 								<td colspan="3">
@@ -145,7 +145,7 @@
 											</div>
 											<div class="card-body">
 												<p class="card-text"><?= $value->deskripsi ?></p>
-												<a href="<?= base_url('Admin/cTransaksiLangsung/cart/' . $value->id_produk) ?>" class="btn btn-primary">Add To Cart</a>
+												<a href="<?= base_url('AdminKasir/cTransaksiLangsung/cart/' . $value->id_produk) ?>" class="btn btn-primary">Add To Cart</a>
 											</div>
 										</div>
 									</div>
@@ -186,7 +186,7 @@
 												<span class="badge badge-success">LANGSUNG</span>
 
 											</td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksiLangsung/detail_tran_langsung/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksiLangsung/detail_tran_langsung/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}

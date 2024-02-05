@@ -33,6 +33,12 @@ class cLogin extends CI_Controller
 				} else if ($data->level_user == '2') {
 					$this->session->set_flashdata('success', 'Selamat Datang Pemilik!');
 					redirect('Pemilik/cDashboard');
+				} else if ($data->level_user == '3') {
+					$this->session->set_flashdata('success', 'Selamat Admin Kasir!');
+					redirect('AdminKasir/cDashboard');
+				} else if ($data->level_user == '4') {
+					$this->session->set_flashdata('success', 'Selamat Datang Admin CS!');
+					redirect('AdminCS/cDashboard');
 				}
 			} else {
 				$this->session->set_flashdata('error', 'Username dan Password Salah!');

@@ -70,7 +70,7 @@
 												<?php
 																	} ?>
 											</td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}
@@ -116,8 +116,8 @@
 												<?php
 																	} ?>
 											</td>
-											<td class="text-center"><a class="btn btn-warning" href="<?= base_url('admin/ctransaksi/konfirmasi/' . $value->id_pesanan) ?>">Konfirmasi Pembayaran</a></td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a class="btn btn-warning" href="<?= base_url('adminkasir/ctransaksi/konfirmasi/' . $value->id_pesanan) ?>">Konfirmasi Pembayaran</a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}
@@ -163,8 +163,8 @@
 												<?php
 																	} ?>
 											</td>
-											<td class="text-center"><a class="btn btn-success" href="<?= base_url('admin/ctransaksi/kirim/' . $value->id_pesanan) ?>">Kirim</a></td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a class="btn btn-success" href="<?= base_url('adminkasir/ctransaksi/kirim/' . $value->id_pesanan) ?>">Kirim</a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}
@@ -209,7 +209,7 @@
 												<?php
 																	} ?>
 											</td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}
@@ -254,7 +254,7 @@
 												<?php
 																	} ?>
 											</td>
-											<td class="text-center"><a href="<?= base_url('Admin/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
+											<td class="text-center"><a href="<?= base_url('AdminKasir/cTransaksi/detail_pesanan/' . $value->id_pesanan) ?>"><i class="align-middle" data-feather="align-justify"></i></a></td>
 										</tr>
 									<?php
 									}

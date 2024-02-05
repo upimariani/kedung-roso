@@ -57,7 +57,7 @@
 									<td><?= $value->time ?></td>
 
 									<td class="table-action">
-										<a href="<?= base_url('Admin/cChatting/detail_chatting/' . $value->id_pelanggan) ?>" class="btn btn-success"><i class="align-middle" data-feather="eye"></i></a>
+										<a href="<?= base_url('AdminCS/cChatting/detail_chatting/' . $value->id_pelanggan) ?>" class="btn btn-success"><i class="align-middle" data-feather="eye"></i></a>
 									</td>
 								</tr>
 							<?php

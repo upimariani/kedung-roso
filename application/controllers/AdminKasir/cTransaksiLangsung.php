@@ -22,18 +22,18 @@ class cTransaksiLangsung extends CI_Controller
 			'transaksi' => $this->mTransaksi->transaksiLangsung(),
 			'pelanggan' => $this->mPelanggan->select()
 		);
-		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/TransaksiLangsung/vTransaksiLangsung', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('AdminKasir/Layouts/head');
+		$this->load->view('AdminKasir/TransaksiLangsung/vTransaksiLangsung', $data);
+		$this->load->view('AdminKasir/Layouts/footer');
 	}
 	public function detail_tran_langsung($id)
 	{
 		$data = array(
 			'detail' => $this->mTransaksi->detail_tran_langsung($id)
 		);
-		$this->load->view('Admin/Layouts/head');
-		$this->load->view('Admin/TransaksiLangsung/detail_pesanan', $data);
-		$this->load->view('Admin/Layouts/footer');
+		$this->load->view('AdminKasir/Layouts/head');
+		$this->load->view('AdminKasir/TransaksiLangsung/detail_pesanan', $data);
+		$this->load->view('AdminKasir/Layouts/footer');
 	}
 	public function cart($id)
 	{
@@ -48,7 +48,7 @@ class cTransaksiLangsung extends CI_Controller
 		);
 		$this->cart->insert($data);
 		$this->session->set_flashdata('success', 'Produk Berhasil Masuk Keranjang!');
-		redirect('Admin/cTransaksiLangsung');
+		redirect('AdminKasir/cTransaksiLangsung');
 	}
 	public function update_cart()
 	{
@@ -62,13 +62,13 @@ class cTransaksiLangsung extends CI_Controller
 			$i++;
 		}
 		$this->session->set_flashdata('success', 'Quantity Produk Berhasil Diperbaharui!');
-		redirect('Admin/cTransaksiLangsung');
+		redirect('AdminKasir/cTransaksiLangsung');
 	}
 	public function delete($rowid)
 	{
 		$this->cart->remove($rowid);
 		$this->session->set_flashdata('success', 'Produk Berhasil Dihapus!');
-		redirect('Admin/cTransaksiLangsung');
+		redirect('AdminKasir/cTransaksiLangsung');
 	}
 	public function selesai()
 	{
@@ -96,7 +96,7 @@ class cTransaksiLangsung extends CI_Controller
 		}
 		$this->cart->destroy();
 		$this->session->set_flashdata('success', 'Pesanan Selesai!');
-		redirect('Admin/cTransaksiLangsung');
+		redirect('AdminKasir/cTransaksiLangsung');
 	}
 }
  
